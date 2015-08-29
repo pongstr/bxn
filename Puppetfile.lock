@@ -206,7 +206,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: toro-io/puppet-nodejs
   specs:
-    nodejs (5.0.4)
+    nodejs (5.0.3)
 
 DEPENDENCIES
   atom (= 1.2.0)
@@ -232,7 +232,7 @@ DEPENDENCIES
   mongodb (= 1.3.4)
   mysql (= 2.1.2)
   nginx (= 1.4.7)
-  nodejs (= 5.0.4)
+  nodejs (= 5.0.3)
   openssl (= 1.0.0)
   osx (= 2.8.0)
   phantomjs (= 3.0.0)
