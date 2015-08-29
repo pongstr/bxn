@@ -79,11 +79,6 @@ GITHUBTARBALL
     mysql (2.1.2)
 
 GITHUBTARBALL
-  remote: boxen/puppet-nodejs
-  specs:
-    nodejs (5.0.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-openssl
   specs:
     openssl (1.0.0)
@@ -206,7 +201,12 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: toro-io/puppet-nginx
   specs:
-    nginx (1.4.6)
+    nginx (1.4.7)
+
+GITHUBTARBALL
+  remote: toro-io/puppet-nodejs
+  specs:
+    nodejs (5.0.4)
 
 DEPENDENCIES
   atom (= 1.2.0)
@@ -231,8 +231,8 @@ DEPENDENCIES
   module_data (= 0.0.4)
   mongodb (= 1.3.4)
   mysql (= 2.1.2)
-  nginx (= 1.4.6)
-  nodejs (= 5.0.0)
+  nginx (= 1.4.7)
+  nodejs (= 5.0.4)
   openssl (= 1.0.0)
   osx (= 2.8.0)
   phantomjs (= 3.0.0)

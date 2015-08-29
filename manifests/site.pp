@@ -75,12 +75,13 @@ node default {
   }
 
   # node versions
+  nodejs::version { '0.12': }
   nodejs::version { '0.12.5': }
   nodejs::version { '0.12.7': }
 
   # default ruby versions
   ruby::version { '1.9.3': }
-  ruby::version { '2.2.3': }
+  ruby::version { '2.1.3': }
 
   # Taps for Homebrew
   homebrew::tap { 'caskroom/versions': }
@@ -107,6 +108,36 @@ node default {
     target => $boxen::config::repodir
   }
 
+  # #########################################################################
+  # Team Mjolnir Customizations
+  # #########################################################################
 
+  # MongoDB
+  # -------
+  # Creates global default Log and Data locations
+  # and sets default host and port at the same time
+  file { '/opt/boxen/data/mongodb':
+    ensure => directory,
+  }
 
+  exec { 'Create MongoDB Data Path':
+    command => "mkdir -p /opt/boxen/data/mongodb/data",
+    creates => "/opt/boxen/data/mongodb/data",
+    onlyif  => ["test ! -d /opt/boxen/data/mongodb"],
+  }
+
+  exec { 'Create MongoDB Log Path':
+    command => "mkdir -p /opt/boxen/data/mongodb/logs",
+    creates => "/opt/boxen/data/mongodb/logs",
+    onlyif  => ["test ! -d /opt/boxen/data/mongodb"],
+  }
+
+  class { 'mongodb':
+    host    => '127.0.0.1',
+    port    => '27017',
+    logdir  => "/opt/boxen/data/mongodb/logs",
+    datadir => "/opt/boxen/data/mongodb/data",
+  }
+
+  # Node Packages
 }
