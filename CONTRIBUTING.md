@@ -10,27 +10,36 @@ Contributing Guidelines
 
 #### [Github Workflow](https://guides.github.com/introduction/flow/)
 
-> This repository complies 100% to Github workflow. No excuses, No Bullshit.
+- This repository complies 100% to Github workflow. No excuses, No Bullshit.
 
 #### Coding Style
 
-> TODO:
+- We've setup the `.editorconfig`, if your editor doesn't support it you can
+  use your brain to parse it. This will keep our diffs as clean as possible and
+  easier to read.
+- We're no Puppet or Ruby pros but the main idea is to write your code as
+  readable as possible, we want things done here the right, better way properly
+  and well thought of, "getting it done" or "it's working anyway" is not
+  enough for us to merge your changes, think back and review then create a PR.
+- Basically, give effort to your commits and don't fuck shit up for everyone
+  and everything will be alright.
 
 #### Feature Requests
 
 Create an issue with yor request, in this format:
 
 ```
-Application:    [Application Name]
-Description:    [Some description about it here]
+Application: [Application Name]
+Description: [Some description about it here]
 Install Source:
   - Puppet
   - Package
   - Repository
 ```
 
-
-
+Why the information? We'll these info gets added to SysAds' list of installed
+applications, this eliminates questioning and all that shizzz so, just fill it
+in.
 
 ### Bugs and Issues
 
