@@ -124,6 +124,8 @@ node default {
   $node_version = '0.12.7'
   $ruby_version = '2.1.6'
 
+  class { 'nodejs::global': version => $node_version }
+  class { 'ruby::global': version => $ruby_version }
 
   # NPM Modules
   # -----------
@@ -259,14 +261,10 @@ node default {
   # ------------------
 
   # Dotfiles Directory
-  file { $custom_dotfiles:
-    ensure => directory
-  }
+  file { $custom_dotfiles: ensure => directory }
 
   # Projects Directory
-  file { $custom_projects:
-    ensure => directory
-  }
+  file { $custom_projects: ensure => directory }
 
   # Vim: Initialize Directories
   $vim = [
@@ -294,10 +292,13 @@ node default {
   include osx::global::tap_to_click
   include osx::safari::enable_developer_mode
 
+  class { 'osx::dock::icon_size': size => 32 }
+  class { 'osx::dock::hot_corners': bottom_right => "Start Screen Saver" }
+  class { 'osx::global::key_repeat_rate': rate => 0 }
   class { 'osx::mouse::button_mode': mode => 2 }
   class { 'osx::mouse::swipe_between_pages': enabled => true }
 
-  class { 'osx::dock::icon_size': size => 32 }
-  class { 'osx::global::key_repeat_rate': rate => 0 }
-  class { 'osx::dock::hot_corners': bottom_right => "Start Screen Saver" }
+  # Atom Packages
+  atom::package { 'language-nginx': }
+  atom::package { 'language-puppet': }
 }
