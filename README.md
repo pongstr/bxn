@@ -7,7 +7,7 @@ This Boxen version is specifically tailored for Team Mjolnir. We decided to
 maintain our own to strictly comply with the contributing standards and enforce
 testing and stability for each release.
 
-- [@pongstr](https://github.com/pongstr)
+[@pongstr](https://github.com/pongstr)
 
 Getting Started
 ---

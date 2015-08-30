@@ -1,0 +1,378 @@
+upstream coder {
+  server localhost:3000;
+  server localhost:3001;
+  server localhost:3002;
+  server localhost:3003;
+  server localhost:3004;
+}
+
+proxy_cache_path /opt/boxen/data/nginx/cache levels=1:2 keys_zone=my-cache:8m max_size=1000m inactive=600m;
+proxy_temp_path /opt/boxen/data/nginx/temp;
+
+# ===========================================================================
+# Coder Root Server Block
+# ===========================================================================
+
+server {
+  listen        80;
+  server_name   coder.dev;
+  return        301 https://$server_name$request_uri;
+}
+
+server {
+  listen                      443;
+  server_name                 coder.dev;
+
+  ssl_certificate             /etc/nginx/ssl/root-coder.dev.crt;
+  ssl_certificate_key         /etc/nginx/ssl/root-coder.dev.key;
+
+  ssl                         on;
+  ssl_ciphers                 HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
+  ssl_protocols               TLSv1 TLSv1.1 TLSv1.2;
+  ssl_session_cache           builtin:1000  shared:SSL:10m;
+  ssl_prefer_server_ciphers   on;
+
+  add_header                  'Cache-Control' "public, must-revalidate";
+  add_header                  'Strict-Transport-Security' "max-age=31536000; includeSubDomains;";
+
+  location / {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /assets {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /vendor {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+}
+
+# ===========================================================================
+# Coder API Server Block
+# ===========================================================================
+
+server {
+  listen        80;
+  server_name   api.coder.dev ;
+  return        301 https://$server_name$request_uri;
+}
+
+server {
+  listen        443;
+  server_name   api.coder.dev;
+
+  ssl_certificate             /etc/nginx/ssl/coder.dev.crt;
+  ssl_certificate_key         /etc/nginx/ssl/coder.dev.key;
+
+  ssl                         on;
+  ssl_ciphers                 HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
+  ssl_protocols               TLSv1 TLSv1.1 TLSv1.2;
+  ssl_session_cache           builtin:1000  shared:SSL:10m;
+  ssl_prefer_server_ciphers   on;
+
+  add_header                  'Cache-Control' "public, must-revalidate";
+  add_header                  'Strict-Transport-Security' "max-age=31536000; includeSubDomains;";
+
+  location / {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder/api$request_uri;
+    proxy_redirect            http://coder/api https://$server_name/api;
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+}
+
+
+# ===========================================================================
+# Coder App Server Block
+# ===========================================================================
+
+server {
+  listen        80;
+  server_name   app.coder.dev ;
+  return        301 https://$server_name$request_uri;
+}
+
+server {
+  listen        443;
+  server_name   app.coder.dev;
+
+  ssl_certificate     /etc/nginx/ssl/coder.dev.crt;
+  ssl_certificate_key /etc/nginx/ssl/coder.dev.key;
+
+  ssl                         on;
+  ssl_ciphers                 HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
+  ssl_protocols               TLSv1 TLSv1.1 TLSv1.2;
+  ssl_session_cache           builtin:1000  shared:SSL:10m;
+  ssl_prefer_server_ciphers   on;
+
+  add_header                  'Cache-Control' "public, must-revalidate";
+  add_header                  'Strict-Transport-Security' "max-age=31536000; includeSubDomains;";
+
+  location / {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder/dashboard$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /favicon.ico {
+    return 301 $scheme://coder.dev$request_uri;
+  }
+
+  location /login {
+    return 301 $scheme://coder.dev/login;
+  }
+
+  location /app {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /assets {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /common {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /vendor {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+}
+
+
+# ===========================================================================
+# Coder Editor Server Block
+# ===========================================================================
+
+server {
+  listen        80;
+  server_name   editor.coder.dev ;
+  return        301 https://$server_name$request_uri;
+}
+
+server {
+  listen        443;
+  server_name   editor.coder.dev;
+
+  ssl_certificate     /etc/nginx/ssl/coder.dev.crt;
+  ssl_certificate_key /etc/nginx/ssl/coder.dev.key;
+
+  ssl                         on;
+  ssl_ciphers                 HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
+  ssl_protocols               TLSv1 TLSv1.1 TLSv1.2;
+  ssl_session_cache           builtin:1000  shared:SSL:10m;
+  ssl_prefer_server_ciphers   on;
+
+  add_header                  'Cache-Control' "public, must-revalidate";
+  add_header                  'Strict-Transport-Security' "max-age=31536000; includeSubDomains;";
+
+  location / {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder/editor$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /favicon.ico {
+    return 301 $scheme://coder.dev/favicon.ico;
+  }
+
+  location /login {
+    return 301 $scheme://coder.dev/login;
+  }
+
+  location /ide {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /assets {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /common {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /vendor {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+}
+
+
+# ===========================================================================
+# Coder Developer Server Block
+# ===========================================================================
+
+server {
+  listen        80;
+  server_name   developer.coder.dev ;
+  return        301 https://$server_name$request_uri;
+}
+
+server {
+  listen        443;
+  server_name   developer.coder.dev;
+
+  ssl_certificate     /etc/nginx/ssl/coder.dev.crt;
+  ssl_certificate_key /etc/nginx/ssl/coder.dev.key;
+
+  ssl                         on;
+  ssl_ciphers                 HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
+  ssl_protocols               TLSv1 TLSv1.1 TLSv1.2;
+  ssl_session_cache           builtin:1000  shared:SSL:10m;
+  ssl_prefer_server_ciphers   on;
+
+  add_header                  'Cache-Control' "public, must-revalidate";
+  add_header                  'Strict-Transport-Security' "max-age=31536000; includeSubDomains;";
+
+  location / {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder/developer$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /assets {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+
+  location /vendor {
+    proxy_set_header          Host $host;
+    proxy_set_header          X-Real-IP $remote_addr;
+    proxy_set_header          X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header          X-Forwarded-Proto $scheme;
+
+    proxy_pass                http://coder$request_uri;
+    proxy_redirect            http://coder https://$server_name;
+    proxy_cache_bypass        $http_cache_control;
+    proxy_read_timeout        90;
+  }
+}
