@@ -1,7 +1,7 @@
 GITHUBTARBALL
   remote: boxen/puppet-atom
   specs:
-    atom (1.2.0)
+    atom (1.3.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-boxen
@@ -22,11 +22,6 @@ GITHUBTARBALL
   remote: boxen/puppet-dnsmasq
   specs:
     dnsmasq (2.0.1)
-
-GITHUBTARBALL
-  remote: boxen/puppet-firefox
-  specs:
-    firefox (1.2.3)
 
 GITHUBTARBALL
   remote: boxen/puppet-foreman
@@ -199,6 +194,11 @@ GITHUBTARBALL
     diffmerge (1.0.0)
 
 GITHUBTARBALL
+  remote: toro-io/puppet-firefox
+  specs:
+    firefox (1.2.4)
+
+GITHUBTARBALL
   remote: toro-io/puppet-nginx
   specs:
     nginx (1.4.7)
@@ -206,10 +206,10 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: toro-io/puppet-nodejs
   specs:
-    nodejs (5.0.4)
+    nodejs (5.0.3)
 
 DEPENDENCIES
-  atom (= 1.2.0)
+  atom (= 1.3.0)
   boot2docker (= 1.0.2)
   boxen (= 3.11.0)
   brewcask (= 0.0.6)
@@ -218,7 +218,7 @@ DEPENDENCIES
   dashlane (= 1.0.2)
   diffmerge (= 1.0.0)
   dnsmasq (= 2.0.1)
-  firefox (= 1.2.3)
+  firefox (= 1.2.4)
   foreman (= 1.2.0)
   gcc (= 3.0.2)
   git (= 2.7.92)
@@ -232,7 +232,7 @@ DEPENDENCIES
   mongodb (= 1.3.4)
   mysql (= 2.1.2)
   nginx (= 1.4.7)
-  nodejs (= 5.0.4)
+  nodejs (= 5.0.3)
   openssl (= 1.0.0)
   osx (= 2.8.0)
   phantomjs (= 3.0.0)
