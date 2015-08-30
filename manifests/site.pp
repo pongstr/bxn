@@ -64,6 +64,7 @@ node default {
   include git
   include hipchat
   include hub
+  include iterm2::stable
   include mongodb
   include nginx
   include python
@@ -127,9 +128,11 @@ node default {
   class { 'nodejs::global': version => $node_version }
   class { 'ruby::global': version => $ruby_version }
 
+
   # NPM Modules
   # -----------
   # Default Mjolnir modules for development and convenience.
+
   npm_module { 'Bower Browser Package Manager':
     module       => 'bower',
     node_version => '*',
@@ -200,9 +203,11 @@ node default {
     node_version => $node_version,
   }
 
+
   # Ruby Gems
   # ---------
   # Default Mjolnir gems for development and convenience.
+
   ruby_gem { 'bundler for all rubies':
     gem          => 'bundler',
     version      => '~> 1.10.6',
@@ -299,6 +304,8 @@ node default {
   class { 'osx::mouse::swipe_between_pages': enabled => true }
 
   # Atom Packages
+  # -------------
+
   atom::package { 'language-nginx': }
   atom::package { 'language-puppet': }
 }

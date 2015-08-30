@@ -1,5 +1,7 @@
-Bxn
+Mjolnir Bxn
 ===
+
+![Vikings](http://orig13.deviantart.net/636c/f/2010/227/6/a/dwarf_shield_by_roblfc1892.jpg)
 
 This Boxen version is specifically tailored for Team Mjolnir. We decided to
 maintain our own boxen to maintain end to end standards, we're maintaining
@@ -68,3 +70,9 @@ Contributing Guidelines & FAQ
 
 Please see the [Contributing Guidelines](CONTRIBUTING.md) or the
 [Frequently Asked Questions](docs/faq.md) here.
+
+Acknowledgements
+---
+
+[**Dwarf Shield Illustration**](http://roblfc1892.deviantart.com/art/dwarf-shield-67219251)
+by [roblfc1892](http://roblfc1892.deviantart.com)
