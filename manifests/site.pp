@@ -117,17 +117,13 @@ node default {
   # Team Mjolnir Customizations
   # #########################################################################
 
-  $home_directory = "/Users/${::boxen_user}"
-  $node_version   = '0.12.7'
-  $ruby_version   = '2.1.6'
+  $home_directory  = "/Users/${::boxen_user}"
+  $custom_dotfiles = "${home_directory}/.dotfiles"
+  $custom_projects = "${home_directory}/Projects"
 
-  # MongoDB
-  # -------
-  # Creates global default Log and Data locations
-  # and sets default host and port at the same time
-  # file { "/opt/boxen/data/mongodb":
-  #   ensure => directory,
-  # }
+  $node_version = '0.12.7'
+  $ruby_version = '2.1.6'
+
 
   # NPM Modules
   # -----------
@@ -235,6 +231,11 @@ node default {
     ruby_version => $ruby_version,
   }
 
+  # Override System Vim
+  package { 'vim':
+    ensure          => present,
+    install_options => ['--override-system-vi']
+  }
 
   # RoboMongo
   package { 'robomongo':
@@ -253,4 +254,50 @@ node default {
       "test ! -d ${home_directory}/.oh-my-zsh"
     ]
   }
+
+  # Ensure Directories
+  # ------------------
+
+  # Dotfiles Directory
+  file { $custom_dotfiles:
+    ensure => directory
+  }
+
+  # Projects Directory
+  file { $custom_projects:
+    ensure => directory
+  }
+
+  # Vim: Initialize Directories
+  $vim = [
+    "${home_directory}/.vim",
+    "${home_directory}/.vim/backups",
+    "${home_directory}/.vim/colors",
+    "${home_directory}/.vim/swaps",
+    "${home_directory}/.vim/undo",
+  ]
+
+  # Vim: Create Directories
+  file { $vim:
+    ensure => directory,
+    owner => $boxen_user,
+    group => 'staff',
+    mode  => '0755',
+  }
+
+  # OSX Preferences
+  include osx::dock::autohide
+  include osx::finder::enable_quicklook_text_selection
+  include osx::finder::show_hard_drives_on_desktop
+  include osx::global::disable_autocorrect
+  include osx::global::expand_save_dialog
+  include osx::global::tap_to_click
+  include osx::safari::enable_developer_mode
+
+  class { 'osx::mouse::button_mode': mode => 2 }
+  class { 'osx::mouse::swipe_between_pages': enabled => true }
+
+  class { 'osx::dock::icon_size': size => 32 }
+  class { 'osx::global::key_repeat_rate': rate => 0 }
+  class { 'osx::dock::hot_corners': bottom_right => "Start Screen Saver" }
 }
