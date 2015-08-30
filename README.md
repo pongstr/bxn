@@ -38,7 +38,7 @@ or you can manually run it:
 ```bash
 $ sudo mkdir -p /opt/boxen
 $ sudo chown ${USER}:staff /opt/boxen
-$ git clone https://github.com/toro-io/bxn.git /opt/boxen/repo && cd /opt/boxen/repo
+$ git clone https://github.com/pongstr/bxn.git /opt/boxen/repo && cd /opt/boxen/repo
 
 # Run the Bootstrap
 $ ./script/boxen-bootstrap
