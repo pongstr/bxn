@@ -4,8 +4,8 @@ Mjolnir Bxn
 ![Vikings](http://orig13.deviantart.net/636c/f/2010/227/6/a/dwarf_shield_by_roblfc1892.jpg)
 
 This Boxen version is specifically tailored for Team Mjolnir. We decided to
-maintain our own boxen to maintain end to end standards, we're maintaining
-this setup the way it should be maintained.
+maintain our own to strictly comply with the contributing standards and enforce
+testing and stability for each release.
 
 - [@pongstr](https://github.com/pongstr)
 
