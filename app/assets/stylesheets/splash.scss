@@ -1,0 +1,157 @@
+@font-face {
+  font-family: 'Stamp';
+  src: url('/assets/stamp-webfont.ttf'),
+       url('/assets/stamp-webfont.eot'),
+       url('/assets/stamp-webfont.woff'),
+       url('/assets/stamp-webfont.svg');
+}
+
+@font-face {
+  font-family: 'MenschBold';
+  src: url('/assets/mensch-bold-webfont.ttf'),
+       url('/assets/mensch-bold-webfont.eot'),
+       url('/assets/mensch-bold-webfont.woff'),
+       url('/assets/mensch-bold-webfont.svg');
+}
+
+@font-face {
+  font-family: 'ProximaNovaRegular';
+  src: url('/assets/proximanova-regular-webfont.ttf'),
+       url('/assets/proximanova-regular-webfont.eot'),
+       url('/assets/proximanova-regular-webfont.woff'),
+       url('/assets/proximanova-regular-webfont.svg');
+}
+
+@font-face {
+  font-family: 'ProximaNovaBold';
+  src: url('/assets/proximanova-bold-webfont.ttf'),
+       url('/assets/proximanova-bold-webfont.eot'),
+       url('/assets/proximanova-bold-webfont.woff'),
+       url('/assets/proximanova-bold-webfont.svg');
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  background-image: url('cardboard_@2X.png');
+  background-size: 600px 600px;
+}
+
+body {
+  font-family: 'ProximaNovaRegular', sans-serif;
+  color: #333;
+  text-align: center;
+  background-image: -webkit-gradient(circle cover, from(rgba(123,89,61,.38)), to(rgba(116,81,50,.6) 100%));
+  background-image: -webkit-radial-gradient(circle cover, rgba(123,89,61,.38), rgba(116,81,50,.6) 100%);
+  background-image: -moz-radial-gradient(circle cover, rgba(123,89,61,.38), rgba(116,81,50,.6) 100%);
+  background-image: -ms-linear-gradient(circle cover, rgba(123,89,61,.38), rgba(116,81,50,.6) 100%);
+  background-image: -o-linear-gradient(circle cover, rgba(123,89,61,.38), rgba(116,81,50,.6) 100%);
+}
+
+p {
+  font-family: 'ProximaNovaRegular';
+  font-size: 14px;
+  color: #333;
+  line-height: 1.65;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+  margin: 0 auto;
+  width: 100%;
+  padding: 8px 0;
+  background-color: rgba(255,255,255,.7);
+  background-color: rgba(255,255,255,.42);
+  box-shadow: inset 0 -1px 2px rgba(255,255,255,.5),
+                inset 0 0 5px rgba(255,255,255,.3),
+                      0 1px 1px rgba(0,0,0,.03);
+
+  strong {
+    font-family: 'ProximaNovaBold';
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+}
+
+#width {
+  width: 750px;
+  padding: 60px 0 0 0;
+  margin: 0 auto;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: 'MenschBold';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 92px;
+  text-align: center;
+  color: #2A2A2F;
+  line-height: 1.2;
+  margin-bottom: 0;
+  text-shadow: 0 1px 1px rgba(255,255,255,.38);
+}
+
+h2, h3 {
+  font-family: 'ProximaNovaBold';
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-top: 29px;
+  text-shadow: 0 1px 1px rgba(255,255,255,.2);
+}
+
+h3 {
+  font-size: 12px;
+}
+
+h3 a {
+  text-decoration: underline;
+}
+
+.stamp {
+  color: #f00;
+  font-family: 'Stamp';
+  font-size: 60px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 0;
+  margin-bottom: 0;
+  position: relative;
+  text-align: right;
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
+}
+
+.code {
+  background-color: #26292B;
+  border: none;
+  color: #fff;
+  font-family: Monaco, 'Liberation Mono', Courier, monospace;
+  font-size: 10px;
+  font-weight: bold;
+  height: auto;
+  margin: 36px 0 18px 0;
+  padding: 28px 0 12px 0;
+  resize: none;
+  text-align: center;
+  width: 720px;
+}
+
+::selection { /* Safari */
+  background: #fff;
+  color: #000;
+}
+
+::-moz-selection { /* Firefox */
+  background: #fff;
+  color: #000;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Boxen</title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <% if view.secondary_message %>
+      <p><strong>One thing &nbsp;</strong><%= view.secondary_message.html_safe %></p>
+    <% end %>
+    <div id="width">
+      <% if view.user_org %>
+        <div class="stamp"><%= view.user_org.html_safe %></div>
+      <% end %>
+      <h1>Welcome to Boxen</h1>
+      <textarea class="code" spellcheck="false" onclick="this.focus();this.select();">curl -s <%= view.script_url %> &gt; /tmp/install-boxen; bash /tmp/install-boxen</textarea>
+      <h2>Run this command in your terminal to install Boxen on your machine.</h2>
+      <h3>Go ahead. <a href="<%= view.script_path %>">Take a peek</a>.</h3>
+    </div>
+  </body>
+</html>
