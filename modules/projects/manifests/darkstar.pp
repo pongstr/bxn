@@ -1,16 +1,16 @@
 class projects::darkstar {
 
   $darkstar = "uikit"
-  $home     = "/Users/${::boxen_user}/Projects"
-  $path     = "${home}/${name}"
-  $boxn     = "/opt/boxen/repo/modules/projects/templates"
+  $boxen = "/opt/boxen/repo/modules/projects/templates"
+  $home  = "/Users/${::boxen_user}/Projects"
+  $path  = "${home}/${darkstar}"
 
   file { $path: ensure => directory }
 
   boxen::project { $darkstar:
     dir     => $path,
     mongodb => true,
-    nginx   => "${boxn}/shared/${darkstar}.conf.erb",
+    nginx   => "${boxen}/shared/${darkstar}.conf.erb",
     nodejs  => "0.12.7",
     source  => "git@bitbucket.org:torodev/darkstar.git",
   }

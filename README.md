@@ -28,7 +28,7 @@ $ chmod +x setup && ./setup
 The Setup
 ---
 
-1. Go to [https://bxnweb.herokuapp.com](https://bxnweb.herokuapp.com)
+1. Go to [https://bxnmjolnir.herokuapp.com/](https://bxnmjolnir.herokuapp.com/)
 1. Login using your Github Account
 1. Copy + Paste the one liner to your Terminal
 1. Grab a coffee, the internet is slow as fuck.
@@ -38,7 +38,7 @@ or you can manually run it:
 ```bash
 $ sudo mkdir -p /opt/boxen
 $ sudo chown ${USER}:staff /opt/boxen
-$ git clone https://github.com/pongstr/bxn.git /opt/boxen/repo && cd /opt/boxen/repo
+$ git clone git@github.com:toro-io/bxn.git /opt/boxen/repo && cd /opt/boxen/repo
 
 # Run the Bootstrap
 $ ./script/boxen-bootstrap
