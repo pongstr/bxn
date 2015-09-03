@@ -1,0 +1,6 @@
+
+ruby::global::version: "2.1.0"
+nodejs::global::version: "0.12.7"
+
+mongodb::host: '127.0.0.1'
+mongodb::port: '27017'

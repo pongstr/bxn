@@ -5,7 +5,7 @@
 ENV['BOXEN_HOME'] = '/opt/boxen'
 
 # Change the repo boxen will use.
-ENV['BOXEN_REPO_NAME'] = 'pongstr/bxn'
+ENV['BOXEN_REPO_NAME'] = 'toro-io/bxn'
 
 # Auto-report issues on failed runs
 ENV["BOXEN_ISSUES_ENABLED"] = 'yes'
