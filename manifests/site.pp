@@ -135,7 +135,7 @@ node default {
 
   npm_module { 'Bower Browser Package Manager':
     module       => 'bower',
-    node_version => '*',
+    node_version => $node_version,
   }
 
   npm_module { 'CoffeeScript':
