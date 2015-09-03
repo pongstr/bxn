@@ -211,7 +211,7 @@ node default {
   ruby_gem { 'bundler for all rubies':
     gem          => 'bundler',
     version      => '~> 1.10.6',
-    ruby_version => '*',
+    ruby_version => $ruby_version,
   }
 
   ruby_gem { 'bootstrap sass':
@@ -309,7 +309,4 @@ node default {
   atom::package { 'language-nginx': }
   atom::package { 'language-puppet': }
 
-  # MongoDB Config
-  mongodb::host { '127.0.0.1': }
-  mongodb::port { '27017': }
 }

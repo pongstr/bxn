@@ -49,22 +49,6 @@ $ ./script/boxen-bootstrap
 $ ./script/boxen
 ```
 
-What You Get
----
-
-- Homebrew
-- Git
-- Hub
-- dnsmasq w/ .dev resolver for localhost
-- rbenv
-- Node.js 0.12.5
-- Node.js 0.12.7
-- Ruby 1.9.3
-- Ruby 2.1.3
-- ack
-- Findutils
-- GNU tar
-
 Contributing Guidelines & FAQ
 ---
 
