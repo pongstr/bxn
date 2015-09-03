@@ -131,6 +131,18 @@ if [[ $CLT_VERSION =~ ^5\.1\.0\.0\.1\.1396320587 ]]; then
   export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
 fi
 
+while true; do
+read -p "
+--> One more thing, did you enable Filevault Disk Encryption on your machine?
+    You may answer Yes or No and we'll take care of the necessary steps. " ANSWER
+
+  case $ANSWER in
+    [y/Y/yes/YES]* ) script/boxen --debug --token <%= view.access_token %> --login <%= view.login %>; break;;
+    [n/N/no/NO]* ) script/boxen --no-fde --debug --token <%= view.access_token %> --login <%= view.login %>; break;;
+    * ) echo "Make up your mind foo";;
+  esac
+done
+
 script/boxen --token <%= view.access_token %> --login <%= view.login %>
 
 cd $HOME
