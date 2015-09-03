@@ -4,9 +4,6 @@ boxen::personal::homebrew_packages:
 
 boxen::personal::osx_apps:
   - appcleaner
-  - deluge
-  - dropbox
-  - github-desktop
   - skype
   - spotify
 
