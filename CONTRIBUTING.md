@@ -5,6 +5,15 @@ Bxn is a version of [toro-io/boxen](https://github.com/toro-io) for Team
 Mjolnir. Our main goal for this version is to maintain its purpose, utilize
 it and properly roll out changes.
 
+BxnWeb
+===
+
+Boxen Automated web installation also lives in this very same repository under
+[boxen-web branch](https://github.com/TORO-IO/bxn/tree/boxen-web), which is
+hooked to heroku app where it fetches updates from. All commits to this branch
+automatically gets deployed, contributing guidelines stated below are still
+applied to this branch.
+
 Contributing Guidelines
 ---
 
@@ -48,7 +57,6 @@ boxen::personal::projects:
   - tomorrowland
   - darkstar
 ```
-
 
 ### Bugs and Issues
 

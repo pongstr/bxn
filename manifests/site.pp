@@ -67,6 +67,7 @@ node default {
   include iterm2::stable
   include mongodb
   include nginx
+  include postgresql
   include python
   include redis
   include sublime_text
