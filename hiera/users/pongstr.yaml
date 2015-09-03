@@ -1,0 +1,11 @@
+
+boxen::personal::homebrew_packages:
+  - heroku-toolbelt
+
+boxen::personal::osx_apps:
+  - appcleaner
+  - deluge
+  - dropbox
+  - github-desktop
+  - skype
+  - spotify

@@ -15,8 +15,9 @@ Contributing Guidelines
 #### Coding Style
 
 - We've setup the `.editorconfig`, if your editor doesn't support it you can
-  use your brain to parse it. This will keep our diffs as clean as possible and
-  easier to read.
+  let your brain to parse it which is extremely hard (you can do it! but the
+  output might not be accurate in some cases). This will keep our diffs as
+  clean as possible and easier to read.
 - We're no Puppet or Ruby pros but the main idea is to write your code as
   readable as possible, we want things done here the right, better way properly
   and well thought of, "getting it done" or "it's working anyway" is not
@@ -24,22 +25,30 @@ Contributing Guidelines
 - Basically, give effort to your commits and don't fuck shit up for everyone
   and everything will be alright.
 
-#### Feature Requests
+#### Application Requests
 
-Create an issue with yor request, in this format:
+This is the super easy part, no need to write `puppet` anymore. So as long as
+the apps you are requesting are **SysAd** approved apps, all you need to this
+is add `hiera/users/your_personal_stuff.yaml`, provided the apps are available
+via Homebrew (native osx apps or homebrew packages) you can easily add them
+straight up like so:
 
+```yaml
+boxen::personal::homebrew_packages:
+  - heroku-toolbelt
+
+boxen::personal::osx_apps:
+  - appcleaner
+  - deluge
+  - github-desktop
+  - skype
+  - spotify
+
+boxen::personal::projects:
+  - tomorrowland
+  - darkstar
 ```
-Application: [Application Name]
-Description: [Some description about it here]
-Install Source:
-  - Puppet
-  - Package
-  - Repository
-```
 
-Why the information? We'll these info gets added to SysAds' list of installed
-applications, this eliminates questioning and all that shizzz so, just fill it
-in.
 
 ### Bugs and Issues
 
