@@ -308,4 +308,8 @@ node default {
 
   atom::package { 'language-nginx': }
   atom::package { 'language-puppet': }
+
+  # MongoDB Config
+  mongodb::host { '127.0.0.1': }
+  mongodb::port { '27017': }
 }
