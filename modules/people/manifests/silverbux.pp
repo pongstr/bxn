@@ -1,4 +1,5 @@
 class people::silverbux {
+
   notify { "Hello ${::boxen_user}, Let's get you bootstrapped.": }
   notify { "We're now going to run the setup to make you feel at home.": }
 
@@ -88,5 +89,10 @@ class people::silverbux {
     ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Package Control.sublime-settings",
     require => Repository[$custom_dotfiles],
+  }
+
+  npm_module { 'Ngcode':
+    module       => 'ngcode',
+    node_version => '0.12.7'
   }
 }
