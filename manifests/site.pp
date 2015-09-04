@@ -159,6 +159,11 @@ node default {
     node_version => $node_version,
   }
 
+  npm_module { 'JSCS':
+    module       => 'jscs',
+    node_version => $node_version,
+  }
+
   npm_module { 'JSHint':
     module       => 'jshint',
     node_version => $node_version,
