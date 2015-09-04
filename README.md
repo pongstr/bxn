@@ -49,6 +49,19 @@ $ ./script/boxen-bootstrap
 $ ./script/boxen
 ```
 
+### Existing Boxen Installation
+
+If your machine is running on a different version of Boxen (e.g., [this boxen](https://github.com/TORO-IO/boxen))
+you may switch to BxnMjolnir by running these commands:
+
+```bash
+# First you have to nuke your current installations,
+# existing apps will not disappear however they will
+# be updated once this BxnMjolnir has initialized
+
+$ cd /opt/boxen/ && ./scripts/nuke --all --force && open https://bxnmjolnir.herokuapp.com
+```
+
 Contributing Guidelines & FAQ
 ---
 

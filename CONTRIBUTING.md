@@ -8,14 +8,38 @@ it and properly roll out changes.
 BxnWeb
 ===
 
+> [Bxn for Team Mjolnir](https://bxnmjolnir.herokuapp.com)
+
 Boxen Automated web installation also lives in this very same repository under
 [boxen-web branch](https://github.com/TORO-IO/bxn/tree/boxen-web), which is
 hooked to heroku app where it fetches updates from. All commits to this branch
 automatically gets deployed, contributing guidelines stated below are still
 applied to this branch.
 
+Version will
+
 Contributing Guidelines
 ---
+
+#### Versioning
+
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
+
+Each release must be accompanied with a Changelog entry, in order: Latest on
+top, Oldest at the bottom. It must be in a markdown syntax so linking can be
+applied when reading the document from Github. You need to follow the format
+below explicitly:
+
+```text
+## Unreleased: Release Target [2.0.0]
+### Update Type [changed|fixed|updated]
+  - list item of changes here [references](#)(if necessary)
+
+## [1.0.0] - YYYY-MM-DD : Release Title
+### Update Type [changed|fixed|updated]
+  - list item of changes here [references](#)(if necessary)
+```
 
 #### [Github Workflow](https://guides.github.com/introduction/flow/)
 
