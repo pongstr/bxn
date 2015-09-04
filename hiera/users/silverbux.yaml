@@ -1,11 +1,13 @@
 
 boxen::personal::homebrew_packages:
   - heroku-toolbelt
+  - watchman
 
 boxen::personal::osx_apps:
   - appcleaner
   - skype
   - spotify
+  - evernote
 
 boxen::personal::projects:
   - darkstar

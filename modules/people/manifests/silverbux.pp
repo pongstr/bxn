@@ -95,9 +95,4 @@ class people::silverbux {
     module       => 'ngcode',
     node_version => '0.12.7'
   }
-
-  npm_module { 'Watchman':
-    module       => 'watchman',
-    node_version => '0.12.7'
-  }
 }
