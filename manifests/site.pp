@@ -315,4 +315,13 @@ node default {
   atom::package { 'language-nginx': }
   atom::package { 'language-puppet': }
 
+  # Homebrew Packages
+  # -----------------
+
+  package {
+    'sassc':
+      ensure => installed,
+      source => 'homebrew'
+  }
+
 }
