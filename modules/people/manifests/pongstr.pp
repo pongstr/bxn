@@ -13,6 +13,7 @@ class people::pongstr {
     path     => $custom_dotfiles,
     ensure   => 'origin/master',
     source   => 'pongstr/dotfiles',
+    force    => true,
     provider => 'git',
   }
 
@@ -21,6 +22,7 @@ class people::pongstr {
     path     => "${custom_packages}/Theme - Spacegray",
     ensure   => 'origin/master',
     source   => 'pongstr/spacegray',
+    force    => true,
     provider => 'git',
   }
 
