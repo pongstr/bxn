@@ -238,9 +238,9 @@ node default {
     ruby_version => $ruby_version,
   }
 
-  ruby_gem { 'github-pages':
-    gem          => 'github-pages',
-    version => '~> 39',
+  ruby_gem { 'jekyll':
+    gem          => 'jekyll',
+    version      => '~> 2.5.3',
     ruby_version => $ruby_version,
   }
 
@@ -311,13 +311,11 @@ node default {
 
   # Atom Packages
   # -------------
-
   atom::package { 'language-nginx': }
   atom::package { 'language-puppet': }
 
   # Homebrew Packages
   # -----------------
-
   package {
     'sassc':
       ensure => installed,

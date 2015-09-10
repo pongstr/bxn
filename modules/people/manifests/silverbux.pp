@@ -95,4 +95,9 @@ class people::silverbux {
     module       => 'ngcode',
     node_version => '0.12.7'
   }
+
+  npm_module { 'Mocha':
+    module       => 'mocha',
+    node_version => '0.12.7'
+  }
 }
