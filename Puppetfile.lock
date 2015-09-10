@@ -124,6 +124,11 @@ GITHUBTARBALL
     sysctl (1.0.1)
 
 GITHUBTARBALL
+  remote: boxen/puppet-vagrant
+  specs:
+    vagrant (3.3.3)
+
+GITHUBTARBALL
   remote: boxen/puppet-virtualbox
   specs:
     virtualbox (1.0.13)
@@ -252,6 +257,7 @@ DEPENDENCIES
   sudo (= 1.0.0)
   sysctl (= 1.0.1)
   tunnelblick (= 1.0.8)
+  vagrant (= 3.3.3)
   virtualbox (= 1.0.13)
   vlc (= 1.1.1)
   wget (= 1.0.1)

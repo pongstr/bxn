@@ -82,8 +82,8 @@ node default {
 
   # node versions
   nodejs::version { '0.12': }
-  nodejs::version { '0.12.5': }
   nodejs::version { '0.12.7': }
+  nodejs::version { '4.0.0': }
 
   # default ruby versions
   ruby::version { '1.9.3': }
@@ -123,7 +123,7 @@ node default {
   $custom_dotfiles = "${home_directory}/.dotfiles"
   $custom_projects = "${home_directory}/Projects"
 
-  $node_version = '0.12.7'
+  $node_version = '4.0.0'
   $ruby_version = '2.1.6'
 
   class { 'nodejs::global': version => $node_version }
@@ -238,9 +238,9 @@ node default {
     ruby_version => $ruby_version,
   }
 
-  ruby_gem { 'github-pages':
-    gem          => 'github-pages',
-    version => '~> 39',
+  ruby_gem { 'jekyll':
+    gem          => 'jekyll',
+    version      => '~> 2.5.3',
     ruby_version => $ruby_version,
   }
 
@@ -311,13 +311,11 @@ node default {
 
   # Atom Packages
   # -------------
-
   atom::package { 'language-nginx': }
   atom::package { 'language-puppet': }
 
   # Homebrew Packages
   # -----------------
-
   package {
     'sassc':
       ensure => installed,
