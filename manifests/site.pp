@@ -65,7 +65,7 @@ node default {
   include hipchat
   include hub
   include iterm2::stable
-  # include mongodb
+  include mongodb
   include nginx
   include postgresql
   include python
