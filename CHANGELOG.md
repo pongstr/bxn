@@ -8,12 +8,18 @@ Bxn Team Mjolnir
   - upgraded puppet-homebrew to `2.0.0`
   - upgraded puppet-python to `2.0.1`
 
+  - added projects the runs in Virtual Machines via vagrant
+
+  - Nodejs and Ruby global versions are now declared from `hiera/common.yaml`
   - node-v4.0.0 availability
-  - Add projects the runs in Virtual Machines
   - Available nodejs versions: `0.12.7` and `4.0.0` we found that other
     versions previously installed are no longer necessary.
+
   - Available ruby versions: `1.9.3` and `2.1.6` we found that other versions
     previously installed are no longer necessary.
+  - bundler installation for all version
+  - removed `gem bootstrap-sass`, bootstrap has switched from less to sass, we'll be
+    using sass/scss as the default css preprocessor
 
 
 ## [1.0.0] - 2015-09-04: Hammer of the Gods

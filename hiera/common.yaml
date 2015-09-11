@@ -1,6 +1,6 @@
 
 # Ruby
-ruby::global::version: "2.1.0"
+ruby::global::version: "2.1.6"
 
 # NodeJS
 nodejs::global::version: "0.12.7"

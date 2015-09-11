@@ -59,11 +59,6 @@ GITHUBTARBALL
     iterm2 (1.2.5)
 
 GITHUBTARBALL
-  remote: boxen/puppet-mongodb
-  specs:
-    mongodb (1.4.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-mysql
   specs:
     mysql (2.1.2)
@@ -189,6 +184,11 @@ GITHUBTARBALL
     hipchat (1.1.4)
 
 GITHUBTARBALL
+  remote: toro-io/puppet-mongodb
+  specs:
+    mongodb (1.4.1)
+
+GITHUBTARBALL
   remote: toro-io/puppet-nginx
   specs:
     nginx (1.4.7)
@@ -239,7 +239,7 @@ DEPENDENCIES
   inifile (= 1.4.1)
   iterm2 (= 1.2.5)
   module_data (= 0.0.4)
-  mongodb (= 1.4.0)
+  mongodb (= 1.4.1)
   mysql (= 2.1.2)
   nginx (= 1.4.7)
   nodejs (= 5.0.3)

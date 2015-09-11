@@ -103,6 +103,7 @@ node default {
       'gnu-tar',
       'libmagic',
       'mpssh',
+      'openssl',
       'wget',
       'unrar'
     ]:
@@ -123,10 +124,6 @@ node default {
 
   $node_version = '0.12.7'
   $ruby_version = '2.1.6'
-
-  class { 'nodejs::global': version => $node_version }
-  class { 'ruby::global': version => $ruby_version }
-
 
   # NPM Modules
   # -----------
@@ -208,39 +205,12 @@ node default {
   }
 
 
-  # Ruby Gems
-  # ---------
-  # Default Mjolnir gems for development and convenience.
-
   ruby_gem { 'bundler for all rubies':
     gem          => 'bundler',
     version      => '~> 1.10.6',
-    ruby_version => $ruby_version,
+    ruby_version => '*',
   }
 
-  ruby_gem { 'bootstrap sass':
-    gem          => 'bootstrap-sass',
-    version      => '~> 3.3.5',
-    ruby_version => $ruby_version,
-  }
-
-  ruby_gem { 'sass compass':
-    gem          => 'compass',
-    version      => '~> 1.0.3',
-    ruby_version => $ruby_version,
-  }
-
-  ruby_gem { 'zurb foundation':
-    gem          => 'foundation',
-    version      => '~> 1.0.4',
-    ruby_version => $ruby_version,
-  }
-
-  ruby_gem { 'jekyll':
-    gem          => 'jekyll',
-    version      => '~> 2.5.3',
-    ruby_version => $ruby_version,
-  }
 
   # Override System Vim
   package { 'vim':
