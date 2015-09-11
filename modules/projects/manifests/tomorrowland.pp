@@ -7,10 +7,18 @@ class projects::tomorrowland {
 
   file { $path: ensure => directory }
 
+  file { 'Certs Location':
+    path   => "${boxen::config::home}/data/nginx/ssl",
+    ensure => directory,
+  }
+
   exec { 'CreateSelfSignedCerts':
     command     => "sh ${boxen}/shell/${tomorrowland}.sh",
-    onlyif      => ["test ! -d /etc/nginx/ssl"],
+    creates     => "${boxen::config::home}/data/nginx/ssl/*.dev.crt",
     refreshonly => true,
+    onlyif      => [
+      "test ! -f ${boxen::config::home}/data/nginx/ssl/*.dev.crt",
+    ],
   }
 
   boxen::project { $tomorrowland:

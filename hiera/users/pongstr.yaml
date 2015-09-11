@@ -11,5 +11,5 @@ boxen::personal::osx_apps:
   - spotify
 
 # boxen::personal::projects:
-  # - darkstar
-  # - tomorrowland
+#   - darkstar
+#   - tomorrowland

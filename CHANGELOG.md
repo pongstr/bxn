@@ -1,25 +1,33 @@
 Bxn Team Mjolnir
 ===
 
-## [Unreleased] - Truth of a Madman
-### Target Release: `1.1.0`
+## [1.1.0-RC-1] - Truth of a Madman
+### OS X 10.11 Support
+**Overview**
   - OS X 10.11 Compatibility
   - upgraded Gemfile with `boxen 2.8.0`
   - upgraded puppet-homebrew to `2.0.0`
   - upgraded puppet-python to `2.0.1`
+  - added projects that runs in vms via vagrant
+  - removed atom package installation from `manifests/site.pp` must be declared
+    to personal puppet or hiera config.
+  - upgraded mongodb to `3.0.6`, now using the team-maintained
+    [puppet-mongodb](https://github.com/TORO-IO/puppet-mongodb)
+  - `oh-my-zh` installed via Repository class
 
-  - added projects the runs in Virtual Machines via vagrant
-
+**Node.js Stuff**
   - Nodejs and Ruby global versions are now declared from `hiera/common.yaml`
   - node-v4.0.0 availability
   - Available nodejs versions: `0.12.7` and `4.0.0` we found that other
     versions previously installed are no longer necessary.
 
+**Ruby Stuff**
   - Available ruby versions: `1.9.3` and `2.1.6` we found that other versions
     previously installed are no longer necessary.
   - bundler installation for all version
-  - removed `gem bootstrap-sass`, bootstrap has switched from less to sass, we'll be
-    using sass/scss as the default css preprocessor
+  - removed `gem bootstrap-sass`, bootstrap has switched from less to sass,
+    we'll be using sass/scss as the default css preprocessor
+  - deprecating `gem compass` in place of `libsass` + `sassc`
 
 
 ## [1.0.0] - 2015-09-04: Hammer of the Gods

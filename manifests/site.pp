@@ -204,6 +204,9 @@ node default {
     node_version => $node_version,
   }
 
+  # Ruby Gems
+  # ---------
+  # Default Mjolnir gems for development and convenience.
 
   ruby_gem { 'bundler for all rubies':
     gem          => 'bundler',
@@ -211,6 +214,27 @@ node default {
     ruby_version => '*',
   }
 
+  ruby_gem { 'jekyll':
+    gem          => 'jekyll',
+    version      => '~> 2.5.3',
+    ruby_version => $ruby_version,
+  }
+
+  # !Deprecated since v1.1.0 in place of `libsass` and `sassc`
+  ruby_gem { 'sass compass':
+    gem          => 'compass',
+    version      => '~> 1.0.3',
+    ruby_version => $ruby_version,
+  }
+
+  ruby_gem { 'foundation cli':
+    gem          => 'foundation',
+    version      => '~> 1.0.4',
+    ruby_version => $ruby_version,
+  }
+
+  # Mooooooarrr Customizations
+  # --------------------------
 
   # Override System Vim
   package { 'vim':
@@ -218,22 +242,19 @@ node default {
     install_options => ['--override-system-vi']
   }
 
-  # RoboMongo
+  # RoboMongorm -r
   package { 'robomongo':
     provider => 'brewcask',
     ensure   => installed,
   }
 
-  # Oh-My-ZSH
-  file { "${home_directory}/.oh-my-zsh":
-    ensure => directory,
-  }
-
-  exec { 'install oh-my-zsh plugin':
-    command => "curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh",
-    onlyif => [
-      "test ! -d ${home_directory}/.oh-my-zsh"
-    ]
+  # Pongstr Dotfiles
+  repository { 'oh-my-zsh':
+    path     => "${home_directory}/.oh-my-zsh",
+    ensure   => 'origin/master',
+    source   => 'robbyrussell/oh-my-zsh',
+    force    => true,
+    provider => 'git',
   }
 
   # Ensure Directories
@@ -277,10 +298,6 @@ node default {
   class { 'osx::mouse::button_mode': mode => 2 }
   class { 'osx::mouse::swipe_between_pages': enabled => true }
 
-  # Atom Packages
-  # -------------
-  atom::package { 'language-nginx': }
-  atom::package { 'language-puppet': }
 
   # Homebrew Packages
   # -----------------
@@ -289,5 +306,4 @@ node default {
       ensure => installed,
       source => 'homebrew'
   }
-
 }
