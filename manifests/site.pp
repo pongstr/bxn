@@ -65,7 +65,7 @@ node default {
   include hipchat
   include hub
   include iterm2::stable
-  include mongodb
+  # include mongodb
   include nginx
   include postgresql
   include python
@@ -81,13 +81,11 @@ node default {
   }
 
   # node versions
-  nodejs::version { '0.12': }
   nodejs::version { '0.12.7': }
   nodejs::version { '4.0.0': }
 
   # default ruby versions
   ruby::version { '1.9.3': }
-  ruby::version { '2.1.3': }
   ruby::version { '2.1.6': }
 
   # Taps for Homebrew
@@ -123,7 +121,7 @@ node default {
   $custom_dotfiles = "${home_directory}/.dotfiles"
   $custom_projects = "${home_directory}/Projects"
 
-  $node_version = '4.0.0'
+  $node_version = '0.12.7'
   $ruby_version = '2.1.6'
 
   class { 'nodejs::global': version => $node_version }

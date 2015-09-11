@@ -10,6 +10,6 @@ boxen::personal::osx_apps:
   - skype
   - spotify
 
-boxen::personal::projects:
-  - darkstar
-  - tomorrowland
+# boxen::personal::projects:
+  # - darkstar
+  # - tomorrowland
