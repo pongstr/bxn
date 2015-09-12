@@ -14,6 +14,7 @@ Bxn Team Mjolnir
   - upgraded mongodb to `3.0.6`, now using the team-maintained
     [puppet-mongodb](https://github.com/TORO-IO/puppet-mongodb)
   - `oh-my-zh` installed via Repository class
+  -  all related service files are now located in `/opt/boxen/data/`
 
 **Node.js Stuff**
   - Nodejs and Ruby global versions are now declared from `hiera/common.yaml`
