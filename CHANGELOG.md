@@ -5,16 +5,19 @@ Bxn Team Mjolnir
 ### OS X 10.11 Support
 **Overview**
   - OS X 10.11 Compatibility
+  - added projects that runs in vms via vagrant
+  - updated `oh-my-zsh` installed via Repository class
+  - updated all related service files (e.g., Self-Signed Certificates, etc),
+    configs are now located in `/opt/boxen/data/`
   - upgraded Gemfile with `boxen 2.8.0`
   - upgraded puppet-homebrew to `2.0.0`
   - upgraded puppet-python to `2.0.1`
-  - added projects that runs in vms via vagrant
-  - removed atom package installation from `manifests/site.pp` must be declared
-    to personal puppet or hiera config.
   - upgraded mongodb to `3.0.6`, now using the team-maintained
     [puppet-mongodb](https://github.com/TORO-IO/puppet-mongodb)
-  - `oh-my-zh` installed via Repository class
-  -  all related service files are now located in `/opt/boxen/data/`
+  - removed atom package installation from `manifests/site.pp` must be declared
+    to personal puppet or hiera config.
+  - deprecated `puppets-{app_name}` that can be installed from package, which
+    lessens maintenance and always kept up-to-date via homebrew.
 
 **Node.js Stuff**
   - Nodejs and Ruby global versions are now declared from `hiera/common.yaml`
