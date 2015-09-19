@@ -1,5 +1,7 @@
 
 boxen::personal::homebrew_packages:
+  - docker
+  - boot2docker
   - heroku-toolbelt
 
 boxen::personal::osx_apps:

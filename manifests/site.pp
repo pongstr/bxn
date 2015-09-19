@@ -52,27 +52,32 @@ Service {
 Homebrew::Formula <| |> -> Package <| |>
 
 node default {
-  include atom
+  # Deprecation Notice:
+  # Includes with `deprecated since v1.1.0` comment will be installed via hiera
+  # since these apps do not necessarily require common environment settings,
+  # it's better of if they are installed via `brew/brew-cask` so we don't have
+  # to maintain its puppet-* repositories anymore.
+  include atom              # deprecated since v1.1.0
   include brewcask
-  include chrome
-  include chrome::canary
-  include cyberduck
-  include dashlane
+  include chrome            # deprecated
+  include chrome::canary    # deprecated
+  include cyberduck         # deprecated
+  include dashlane          # deprecated
   include dnsmasq
-  include firefox
-  include firefox::aurora
+  include firefox           # deprecated
+  include firefox::aurora   # deprecated
   include git
-  include hipchat
+  include hipchat           # deprecated
   include hub
-  include iterm2::stable
+  include iterm2::stable    # deprecated
   include mongodb
   include nginx
   include postgresql
   include python
   include redis
-  include sublime_text
-  include virtualbox
-  include vlc
+  include sublime_text      # deprecated
+  include virtualbox        # deprecated
+  include vlc               # deprecated
   include zsh
 
   # fail if FDE is not enabled
