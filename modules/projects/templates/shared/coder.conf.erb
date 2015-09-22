@@ -23,8 +23,8 @@ server {
   listen                      443;
   server_name                 coder.dev;
 
-  ssl_certificate             /etc/nginx/ssl/root-coder.dev.crt;
-  ssl_certificate_key         /etc/nginx/ssl/root-coder.dev.key;
+  ssl_certificate             /opt/boxen/data/nginx/ssl/root-coder.dev.crt;
+  ssl_certificate_key         /opt/boxen/data/nginx/ssl/root-coder.dev.key;
 
   ssl                         on;
   ssl_ciphers                 HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
@@ -86,8 +86,8 @@ server {
   listen        443;
   server_name   api.coder.dev;
 
-  ssl_certificate             /etc/nginx/ssl/coder.dev.crt;
-  ssl_certificate_key         /etc/nginx/ssl/coder.dev.key;
+  ssl_certificate             /opt/boxen/data/nginx/ssl/coder.dev.crt;
+  ssl_certificate_key         /opt/boxen/data/nginx/ssl/coder.dev.key;
 
   ssl                         on;
   ssl_ciphers                 HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
@@ -126,8 +126,8 @@ server {
   listen        443;
   server_name   app.coder.dev;
 
-  ssl_certificate     /etc/nginx/ssl/coder.dev.crt;
-  ssl_certificate_key /etc/nginx/ssl/coder.dev.key;
+  ssl_certificate             /opt/boxen/data/nginx/ssl/coder.dev.crt;
+  ssl_certificate_key         /opt/boxen/data/nginx/ssl/coder.dev.key;
 
   ssl                         on;
   ssl_ciphers                 HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
@@ -227,8 +227,8 @@ server {
   listen        443;
   server_name   editor.coder.dev;
 
-  ssl_certificate     /etc/nginx/ssl/coder.dev.crt;
-  ssl_certificate_key /etc/nginx/ssl/coder.dev.key;
+  ssl_certificate             /opt/boxen/data/nginx/ssl/coder.dev.crt;
+  ssl_certificate_key         /opt/boxen/data/nginx/ssl/coder.dev.key;
 
   ssl                         on;
   ssl_ciphers                 HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
@@ -328,8 +328,8 @@ server {
   listen        443;
   server_name   developer.coder.dev;
 
-  ssl_certificate     /etc/nginx/ssl/coder.dev.crt;
-  ssl_certificate_key /etc/nginx/ssl/coder.dev.key;
+  ssl_certificate             /opt/boxen/data/nginx/ssl/coder.dev.crt;
+  ssl_certificate_key         /opt/boxen/data/nginx/ssl/coder.dev.key;
 
   ssl                         on;
   ssl_ciphers                 HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;

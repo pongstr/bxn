@@ -52,6 +52,10 @@ class people::pongstr {
     require => Repository[$custom_dotfiles],
   }
 
+  file { "${home_directory}/.oh-my-zsh/themes":
+    ensure => directory
+  }
+
   # Zsh: Link Zsh Pongstr Base-16 Theme
   file { "${home_directory}/.oh-my-zsh/themes/pongstr.zsh-theme":
     mode    => '0755',
@@ -92,4 +96,6 @@ class people::pongstr {
     source  => "${custom_dotfiles}/bin/subl/Package Control.sublime-settings",
     require => Repository[$custom_dotfiles],
   }
+
+  include projects::all
 }

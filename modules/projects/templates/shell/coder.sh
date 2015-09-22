@@ -2,7 +2,7 @@
 set -u
 set -e
 
-SSL_DIR="/etc/nginx/ssl"
+SSL_DIR="/opt/boxen/data/nginx/ssl"
 ROOT_SSL_NAME="root-coder.dev"
 ROOT_SSL_FQDN="coder.dev"
 

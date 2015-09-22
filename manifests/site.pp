@@ -52,27 +52,32 @@ Service {
 Homebrew::Formula <| |> -> Package <| |>
 
 node default {
-  include atom
+  # Deprecation Notice:
+  # Includes with `deprecated since v1.1.0` comment will be installed via hiera
+  # since these apps do not necessarily require common environment settings,
+  # it's better of if they are installed via `brew/brew-cask` so we don't have
+  # to maintain its puppet-* repositories anymore.
+  include atom              # deprecated since v1.1.0
   include brewcask
-  include chrome
-  include chrome::canary
-  include cyberduck
-  include dashlane
+  include chrome            # deprecated
+  include chrome::canary    # deprecated
+  include cyberduck         # deprecated
+  include dashlane          # deprecated
   include dnsmasq
-  include firefox
-  include firefox::aurora
+  include firefox           # deprecated
+  include firefox::aurora   # deprecated
   include git
-  include hipchat
+  include hipchat           # deprecated
   include hub
-  include iterm2::stable
+  include iterm2::stable    # deprecated
   include mongodb
   include nginx
   include postgresql
   include python
   include redis
-  include sublime_text
-  include virtualbox
-  include vlc
+  include sublime_text      # deprecated
+  include virtualbox        # deprecated
+  include vlc               # deprecated
   include zsh
 
   # fail if FDE is not enabled
@@ -81,13 +86,11 @@ node default {
   }
 
   # node versions
-  nodejs::version { '0.12': }
-  nodejs::version { '0.12.5': }
   nodejs::version { '0.12.7': }
+  nodejs::version { '4.1.0': }
 
   # default ruby versions
   ruby::version { '1.9.3': }
-  ruby::version { '2.1.3': }
   ruby::version { '2.1.6': }
 
   # Taps for Homebrew
@@ -105,6 +108,7 @@ node default {
       'gnu-tar',
       'libmagic',
       'mpssh',
+      'openssl',
       'wget',
       'unrar'
     ]:
@@ -123,12 +127,8 @@ node default {
   $custom_dotfiles = "${home_directory}/.dotfiles"
   $custom_projects = "${home_directory}/Projects"
 
-  $node_version = '0.12.7'
+  $node_version = '4.1.0'
   $ruby_version = '2.1.6'
-
-  class { 'nodejs::global': version => $node_version }
-  class { 'ruby::global': version => $ruby_version }
-
 
   # NPM Modules
   # -----------
@@ -209,7 +209,6 @@ node default {
     node_version => $node_version,
   }
 
-
   # Ruby Gems
   # ---------
   # Default Mjolnir gems for development and convenience.
@@ -217,25 +216,7 @@ node default {
   ruby_gem { 'bundler for all rubies':
     gem          => 'bundler',
     version      => '~> 1.10.6',
-    ruby_version => $ruby_version,
-  }
-
-  ruby_gem { 'bootstrap sass':
-    gem          => 'bootstrap-sass',
-    version      => '~> 3.3.5',
-    ruby_version => $ruby_version,
-  }
-
-  ruby_gem { 'sass compass':
-    gem          => 'compass',
-    version      => '~> 1.0.3',
-    ruby_version => $ruby_version,
-  }
-
-  ruby_gem { 'zurb foundation':
-    gem          => 'foundation',
-    version      => '~> 1.0.4',
-    ruby_version => $ruby_version,
+    ruby_version => '*',
   }
 
   ruby_gem { 'jekyll':
@@ -244,28 +225,41 @@ node default {
     ruby_version => $ruby_version,
   }
 
+  # !Deprecated since v1.1.0 in place of `libsass` and `sassc`
+  ruby_gem { 'sass compass':
+    gem          => 'compass',
+    version      => '~> 1.0.3',
+    ruby_version => $ruby_version,
+  }
+
+  ruby_gem { 'foundation cli':
+    gem          => 'foundation',
+    version      => '~> 1.0.4',
+    ruby_version => $ruby_version,
+  }
+
+  # Mooooooarrr Customizations
+  # --------------------------
+
   # Override System Vim
   package { 'vim':
     ensure          => present,
     install_options => ['--override-system-vi']
   }
 
-  # RoboMongo
+  # RoboMongorm -r
   package { 'robomongo':
     provider => 'brewcask',
     ensure   => installed,
   }
 
-  # Oh-My-ZSH
-  file { "${home_directory}/.oh-my-zsh":
-    ensure => directory,
-  }
-
-  exec { 'install oh-my-zsh plugin':
-    command => "curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh",
-    onlyif => [
-      "test ! -d ${home_directory}/.oh-my-zsh"
-    ]
+  # Pongstr Dotfiles
+  repository { 'oh-my-zsh':
+    path     => "${home_directory}/.oh-my-zsh",
+    ensure   => 'origin/master',
+    source   => 'robbyrussell/oh-my-zsh',
+    force    => true,
+    provider => 'git',
   }
 
   # Ensure Directories
@@ -309,10 +303,6 @@ node default {
   class { 'osx::mouse::button_mode': mode => 2 }
   class { 'osx::mouse::swipe_between_pages': enabled => true }
 
-  # Atom Packages
-  # -------------
-  atom::package { 'language-nginx': }
-  atom::package { 'language-puppet': }
 
   # Homebrew Packages
   # -----------------
@@ -321,5 +311,4 @@ node default {
       ensure => installed,
       source => 'homebrew'
   }
-
 }

@@ -1,10 +1,21 @@
 
 # Ruby
-ruby::global::version: "2.1.0"
+ruby::global::version: "2.1.6"
 
 # NodeJS
-nodejs::global::version: "0.12.7"
+nodejs::global::version: "4.1.0"
+nodejs::nodenv::plugins:
+  node-build:
+    ensure: "809de5f4485bfadafa3335c437990e996854cf9f"
+    source: "pongstr/node-build"
 
 # MongoDB
-mongodb::host: '127.0.0.1'
-mongodb::port: '27017'
+mongodb::config:
+  host: '127.0.0.1'
+  port: '27017'
+  version: '3.0.6-boxen1'
+
+# Redis
+redis::config:
+  host: '127.0.0.1'
+  port: '16379'
