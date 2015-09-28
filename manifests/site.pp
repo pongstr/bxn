@@ -57,7 +57,7 @@ node default {
   # since these apps do not necessarily require common environment settings,
   # it's better of if they are installed via `brew/brew-cask` so we don't have
   # to maintain its puppet-* repositories anymore.
-
+  #
   # include atom              # deprecated since v1.1.0
   # include chrome            # deprecated
   # include chrome::canary    # deprecated
@@ -68,7 +68,6 @@ node default {
   # include hipchat           # deprecated
   # include iterm2::stable    # deprecated
   # include sublime_text      # deprecated
-  # include virtualbox        # deprecated
   # include vlc               # deprecated
 
   include brewcask
@@ -80,6 +79,7 @@ node default {
   include postgresql
   include python
   include redis
+  include virtualbox
   include zsh
 
   # fail if FDE is not enabled
@@ -129,7 +129,7 @@ node default {
   $custom_dotfiles = "${home_directory}/.dotfiles"
   $custom_projects = "${home_directory}/Projects"
 
-  $node_version = '4.1.0'
+  $node_version = '4.1.1'
   $ruby_version = '2.1.6'
 
   # NPM Modules
@@ -218,7 +218,7 @@ node default {
   ruby_gem { 'bundler for all rubies':
     gem          => 'bundler',
     version      => '~> 1.10.6',
-    ruby_version => '*',
+    ruby_version => $ruby_version,
   }
 
   ruby_gem { 'jekyll':
@@ -243,19 +243,7 @@ node default {
   # Mooooooarrr Customizations
   # --------------------------
 
-  # Override System Vim
-  package { 'vim':
-    ensure          => present,
-    install_options => ['--override-system-vi']
-  }
-
-  # RoboMongorm -r
-  package { 'robomongo':
-    provider => 'brewcask',
-    ensure   => installed,
-  }
-
-  # Pongstr Dotfiles
+  # OhMyZshell
   repository { 'oh-my-zsh':
     path     => "${home_directory}/.oh-my-zsh",
     ensure   => 'origin/master',
@@ -310,82 +298,117 @@ node default {
   # -----------------
   package {
     'atom':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed',
       install_options => [
         '--appdir=/Applications'
       ];
 
     'cyberduck':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed',
       install_options => [
         '--appdir=/Applications'
       ];
 
     'dashlane':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed',
       install_options => [
         '--appdir=/Applications'
       ];
 
-    'dockertoolbox':
+    'diffmerge':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed';
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'docker':
+      ensure => 'present',
+      source => 'homebrew';
+
+    'docker-machine':
+      ensure => 'present',
+      provider => 'brewcask';
+
+    'docker-compose':
+      ensure => 'present',
+      provider => 'brewcask';
 
     'firefox':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed',
       install_options => [
         '--appdir=/Applications'
       ];
 
-    # 'firefoxdeveloperedition':
-    #   provider => 'brewcask',
-    #   ensure   => 'installed';
+    'firefoxdeveloperedition':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
 
     'google-chrome':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed',
       install_options => [
         '--appdir=/Applications'
       ];
 
     'google-chrome-canary':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed',
       install_options => [
         '--appdir=/Applications'
       ];
 
     'hipchat':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed',
       install_options => [
         '--appdir=/Applications'
       ];
 
-    'sublime-text3':
+    'iterm2':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'kitematic':
+      ensure => 'present',
+      provider => 'brewcask',
       install_options => [
         '--appdir=/Applications'
       ];
 
     'sassc':
-      ensure => installed,
+      ensure => 'installed',
       source => 'homebrew';
 
-    'vlc':
+    'sublime-text3':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed',
       install_options => [
         '--appdir=/Applications'
       ];
 
-    'virtualbox':
+    'vim':
+      ensure => 'installed',
+      source => 'homebrew',
+      install_options => [
+        '--override-system-vi'
+      ];
+
+    'vlc':
+      ensure   => 'present',
       provider => 'brewcask',
-      ensure   => 'installed';
+      install_options => [
+        '--appdir=/Applications'
+      ];
   }
 }

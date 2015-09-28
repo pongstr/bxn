@@ -1,22 +1,26 @@
 Bxn Team Mjolnir
 ===
 
-## [1.1.0-RC-2] - Truth of a Madman
+## [1.1.0-RC2] - Truth of a Madman
 ### OS X 10.11 Support
+**Latest Updates**
 
-- Upgraded to Redis `v3.0.4`
+- Removed: `puppet-{app_name}`, apps that don't need env settings are now
+  installed via Package class, sources depends on where it's available.
+- Removed: `boot2docker`, as per vendor notice, it's deprecated and is
+  replaced with `Docker-Machine` brewcask provider.
+- Updated: Redis `v3.0.4`
+- Updated: Node.js `v4.1.1`
+- Patched: [#30](https://github.com/toro-io/bxn/issues/30) [#32](https://github.com/toro-io/bxn/issues/32)
 
-- Rolled back to `puppet-homebrew v1.13.0`, `v2.0.0` on a freshly installed OSX
-  lessens maintenance and always kept up-to-date via homebrew.
+**Known issues**
 
-- Removed `puppets-{app_name}` that can be installed from package, which
-- Removed `boot2docker` for Docker Machine via DockerToolbox
+  - `Docker-Machine` installation fails due to the "need of `sudo`" for
+    specific casks, a "hacky way" to work around it is to run:
+    `while true; do sudo ls -l; sleep 2; done;` before installation begins
+    so it keeps sudo session alive and succeed the cask's installation.
 
-
-**Node.js Stuff**
-    - node-v4.1.1 as the Default Global version
-
-## [1.1.0-RC-1] - Truth of a Madman
+## [1.1.0-RC1] - Truth of a Madman
 ### OS X 10.11 Support
 **Overview**
   - OS X 10.11 Compatibility

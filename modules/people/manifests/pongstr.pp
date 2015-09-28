@@ -8,6 +8,11 @@ class people::pongstr {
   $custom_projects = "${home_directory}/Projects"
   $custom_packages = "${home_directory}/Library/Application Support/Sublime Text 3/Packages"
 
+  file { "${custom_packages}/User":
+    ensure => directory,
+    require => Package['sublime-text3'],
+  }
+
   # Pongstr Dotfiles
   repository { $custom_dotfiles:
     path     => $custom_dotfiles,
@@ -72,8 +77,9 @@ class people::pongstr {
     mode    => '0755',
     group   => 'staff',
     owner   => $boxen_user,
+    ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Preferences.sublime-settings",
-    require  => Package['sublime-text3'],
+    require => File["${custom_packages}/User"],
   }
 
   # Keymaps
@@ -81,8 +87,9 @@ class people::pongstr {
     mode    => '0755',
     group   => 'staff',
     owner   => $boxen_user,
+    ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Default (OSX).sublime-keymap",
-    require  => Package['sublime-text3'],
+    require => File["${custom_packages}/User"],
   }
 
   # Package Control
@@ -90,8 +97,9 @@ class people::pongstr {
     mode    => '0755',
     group   => 'staff',
     owner   => $boxen_user,
+    ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Package Control.sublime-settings",
-    require  => Package['sublime-text3'],
+    require => File["${custom_packages}/User"],
   }
 
   include projects::all

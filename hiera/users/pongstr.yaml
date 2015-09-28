@@ -1,15 +1,17 @@
+---
 
 boxen::personal::homebrew_packages:
   - heroku-toolbelt
 
 boxen::personal::osx_apps:
   - appcleaner
-  # - deluge
-  # - dropbox
+  - deluge
+  - dropbox
   - github-desktop
   - skype
-  # - spotify
-
+  - spotify
+  - torbrowser
+  
 boxen::personal::projects:
   - bootstrap
   - darkstar

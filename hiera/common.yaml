@@ -4,13 +4,8 @@ ruby::global::version: "2.1.6"
 
 # NodeJS
 nodejs::provider: "nodenv"
-nodejs::user: "deploy"
-
 nodejs::global::version: "4.1.1"
-nodejs::nodenv::plugins:
-  node-build:
-    ensure: "809de5f4485bfadafa3335c437990e996854cf9f"
-    source: "pongstr/node-build"
+
 
 # MongoDB
 mongodb::config:
