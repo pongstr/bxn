@@ -57,27 +57,29 @@ node default {
   # since these apps do not necessarily require common environment settings,
   # it's better of if they are installed via `brew/brew-cask` so we don't have
   # to maintain its puppet-* repositories anymore.
-  include atom              # deprecated since v1.1.0
+
+  # include atom              # deprecated since v1.1.0
+  # include chrome            # deprecated
+  # include chrome::canary    # deprecated
+  # include cyberduck         # deprecated
+  # include dashlane          # deprecated
+  # include firefox           # deprecated
+  # include firefox::aurora   # deprecated
+  # include hipchat           # deprecated
+  # include iterm2::stable    # deprecated
+  # include sublime_text      # deprecated
+  # include virtualbox        # deprecated
+  # include vlc               # deprecated
+
   include brewcask
-  include chrome            # deprecated
-  include chrome::canary    # deprecated
-  include cyberduck         # deprecated
-  include dashlane          # deprecated
   include dnsmasq
-  include firefox           # deprecated
-  include firefox::aurora   # deprecated
   include git
-  include hipchat           # deprecated
   include hub
-  include iterm2::stable    # deprecated
   include mongodb
   include nginx
   include postgresql
   include python
   include redis
-  include sublime_text      # deprecated
-  include virtualbox        # deprecated
-  include vlc               # deprecated
   include zsh
 
   # fail if FDE is not enabled
@@ -87,7 +89,7 @@ node default {
 
   # node versions
   nodejs::version { '0.12.7': }
-  nodejs::version { '4.1.0': }
+  nodejs::version { '4.1.1': }
 
   # default ruby versions
   ruby::version { '1.9.3': }
@@ -307,8 +309,83 @@ node default {
   # Homebrew Packages
   # -----------------
   package {
+    'atom':
+      provider => 'brewcask',
+      ensure   => 'installed',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'cyberduck':
+      provider => 'brewcask',
+      ensure   => 'installed',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'dashlane':
+      provider => 'brewcask',
+      ensure   => 'installed',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'dockertoolbox':
+      provider => 'brewcask',
+      ensure   => 'installed';
+
+    'firefox':
+      provider => 'brewcask',
+      ensure   => 'installed',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    # 'firefoxdeveloperedition':
+    #   provider => 'brewcask',
+    #   ensure   => 'installed';
+
+    'google-chrome':
+      provider => 'brewcask',
+      ensure   => 'installed',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'google-chrome-canary':
+      provider => 'brewcask',
+      ensure   => 'installed',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'hipchat':
+      provider => 'brewcask',
+      ensure   => 'installed',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'sublime-text3':
+      provider => 'brewcask',
+      ensure   => 'installed',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
     'sassc':
       ensure => installed,
-      source => 'homebrew'
+      source => 'homebrew';
+
+    'vlc':
+      provider => 'brewcask',
+      ensure   => 'installed',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'virtualbox':
+      provider => 'brewcask',
+      ensure   => 'installed';
   }
 }

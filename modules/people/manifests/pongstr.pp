@@ -61,7 +61,7 @@ class people::pongstr {
     mode    => '0755',
     ensure  => link,
     target  => "${custom_dotfiles}/bin/shell/Pongstr Base-16.zsh-theme",
-    require => Repository[$custom_dotfiles],
+    require => Repository['oh-my-zsh'],
   }
 
   # Sublime Text 3 Settings
@@ -72,9 +72,8 @@ class people::pongstr {
     mode    => '0755',
     group   => 'staff',
     owner   => $boxen_user,
-    ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Preferences.sublime-settings",
-    require => Repository[$custom_dotfiles],
+    require  => Package['sublime-text3'],
   }
 
   # Keymaps
@@ -82,9 +81,8 @@ class people::pongstr {
     mode    => '0755',
     group   => 'staff',
     owner   => $boxen_user,
-    ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Default (OSX).sublime-keymap",
-    require => Repository[$custom_dotfiles],
+    require  => Package['sublime-text3'],
   }
 
   # Package Control
@@ -92,9 +90,8 @@ class people::pongstr {
     mode    => '0755',
     group   => 'staff',
     owner   => $boxen_user,
-    ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Package Control.sublime-settings",
-    require => Repository[$custom_dotfiles],
+    require  => Package['sublime-text3'],
   }
 
   include projects::all

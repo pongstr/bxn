@@ -1,16 +1,14 @@
 
 boxen::personal::homebrew_packages:
-  - docker
-  - boot2docker
   - heroku-toolbelt
 
 boxen::personal::osx_apps:
   - appcleaner
-  - deluge
-  - dropbox
+  # - deluge
+  # - dropbox
   - github-desktop
   - skype
-  - spotify
+  # - spotify
 
 boxen::personal::projects:
   - bootstrap

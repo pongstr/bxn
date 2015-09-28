@@ -1,6 +1,21 @@
 Bxn Team Mjolnir
 ===
 
+## [1.1.0-RC-2] - Truth of a Madman
+### OS X 10.11 Support
+
+- Upgraded to Redis `v3.0.4`
+
+- Rolled back to `puppet-homebrew v1.13.0`, `v2.0.0` on a freshly installed OSX
+  lessens maintenance and always kept up-to-date via homebrew.
+
+- Removed `puppets-{app_name}` that can be installed from package, which
+- Removed `boot2docker` for Docker Machine via DockerToolbox
+
+
+**Node.js Stuff**
+    - node-v4.1.1 as the Default Global version
+
 ## [1.1.0-RC-1] - Truth of a Madman
 ### OS X 10.11 Support
 **Overview**
@@ -40,4 +55,3 @@ Bxn Team Mjolnir
   - Application puppets are maintained by the team [`puppet-*`](https://github.com/TORO-IO?utf8=✓&query=puppet-).
   - Boxen Web for automated installation. [branch](https://github.com/TORO-IO/bxn/tree/boxen-web) [9f174c6](https://github.com/TORO-IO/bxn/commit/9f174c6c436dad0bec379fcc51bc4aa362e0bff)
   - Boxen Web is restricted to Team Mjolnir only.
-
