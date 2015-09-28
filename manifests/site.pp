@@ -57,27 +57,29 @@ node default {
   # since these apps do not necessarily require common environment settings,
   # it's better of if they are installed via `brew/brew-cask` so we don't have
   # to maintain its puppet-* repositories anymore.
-  include atom              # deprecated since v1.1.0
+  #
+  # include atom              # deprecated since v1.1.0
+  # include chrome            # deprecated
+  # include chrome::canary    # deprecated
+  # include cyberduck         # deprecated
+  # include dashlane          # deprecated
+  # include firefox           # deprecated
+  # include firefox::aurora   # deprecated
+  # include hipchat           # deprecated
+  # include iterm2::stable    # deprecated
+  # include sublime_text      # deprecated
+  # include vlc               # deprecated
+
   include brewcask
-  include chrome            # deprecated
-  include chrome::canary    # deprecated
-  include cyberduck         # deprecated
-  include dashlane          # deprecated
   include dnsmasq
-  include firefox           # deprecated
-  include firefox::aurora   # deprecated
   include git
-  include hipchat           # deprecated
   include hub
-  include iterm2::stable    # deprecated
   include mongodb
   include nginx
   include postgresql
   include python
   include redis
-  include sublime_text      # deprecated
-  include virtualbox        # deprecated
-  include vlc               # deprecated
+  include virtualbox
   include zsh
 
   # fail if FDE is not enabled
@@ -87,7 +89,7 @@ node default {
 
   # node versions
   nodejs::version { '0.12.7': }
-  nodejs::version { '4.1.0': }
+  nodejs::version { '4.1.1': }
 
   # default ruby versions
   ruby::version { '1.9.3': }
@@ -127,7 +129,7 @@ node default {
   $custom_dotfiles = "${home_directory}/.dotfiles"
   $custom_projects = "${home_directory}/Projects"
 
-  $node_version = '4.1.0'
+  $node_version = '4.1.1'
   $ruby_version = '2.1.6'
 
   # NPM Modules
@@ -216,7 +218,7 @@ node default {
   ruby_gem { 'bundler for all rubies':
     gem          => 'bundler',
     version      => '~> 1.10.6',
-    ruby_version => '*',
+    ruby_version => $ruby_version,
   }
 
   ruby_gem { 'jekyll':
@@ -241,19 +243,7 @@ node default {
   # Mooooooarrr Customizations
   # --------------------------
 
-  # Override System Vim
-  package { 'vim':
-    ensure          => present,
-    install_options => ['--override-system-vi']
-  }
-
-  # RoboMongorm -r
-  package { 'robomongo':
-    provider => 'brewcask',
-    ensure   => installed,
-  }
-
-  # Pongstr Dotfiles
+  # OhMyZshell
   repository { 'oh-my-zsh':
     path     => "${home_directory}/.oh-my-zsh",
     ensure   => 'origin/master',
@@ -307,8 +297,118 @@ node default {
   # Homebrew Packages
   # -----------------
   package {
+    'atom':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'cyberduck':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'dashlane':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'diffmerge':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'docker':
+      ensure => 'present',
+      source => 'homebrew';
+
+    'docker-machine':
+      ensure => 'present',
+      provider => 'brewcask';
+
+    'docker-compose':
+      ensure => 'present',
+      provider => 'brewcask';
+
+    'firefox':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'firefoxdeveloperedition':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'google-chrome':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'google-chrome-canary':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'hipchat':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'iterm2':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'kitematic':
+      ensure => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
     'sassc':
-      ensure => installed,
-      source => 'homebrew'
+      ensure => 'installed',
+      source => 'homebrew';
+
+    'sublime-text3':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
+
+    'vim':
+      ensure => 'installed',
+      source => 'homebrew',
+      install_options => [
+        '--override-system-vi'
+      ];
+
+    'vlc':
+      ensure   => 'present',
+      provider => 'brewcask',
+      install_options => [
+        '--appdir=/Applications'
+      ];
   }
 }

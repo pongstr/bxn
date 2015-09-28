@@ -8,6 +8,11 @@ class people::pongstr {
   $custom_projects = "${home_directory}/Projects"
   $custom_packages = "${home_directory}/Library/Application Support/Sublime Text 3/Packages"
 
+  file { "${custom_packages}/User":
+    ensure => directory,
+    require => Package['sublime-text3'],
+  }
+
   # Pongstr Dotfiles
   repository { $custom_dotfiles:
     path     => $custom_dotfiles,
@@ -61,7 +66,7 @@ class people::pongstr {
     mode    => '0755',
     ensure  => link,
     target  => "${custom_dotfiles}/bin/shell/Pongstr Base-16.zsh-theme",
-    require => Repository[$custom_dotfiles],
+    require => Repository['oh-my-zsh'],
   }
 
   # Sublime Text 3 Settings
@@ -74,7 +79,7 @@ class people::pongstr {
     owner   => $boxen_user,
     ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Preferences.sublime-settings",
-    require => Repository[$custom_dotfiles],
+    require => File["${custom_packages}/User"],
   }
 
   # Keymaps
@@ -84,7 +89,7 @@ class people::pongstr {
     owner   => $boxen_user,
     ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Default (OSX).sublime-keymap",
-    require => Repository[$custom_dotfiles],
+    require => File["${custom_packages}/User"],
   }
 
   # Package Control
@@ -94,7 +99,7 @@ class people::pongstr {
     owner   => $boxen_user,
     ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Package Control.sublime-settings",
-    require => Repository[$custom_dotfiles],
+    require => File["${custom_packages}/User"],
   }
 
   include projects::all
