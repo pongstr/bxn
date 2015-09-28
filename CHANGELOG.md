@@ -1,6 +1,26 @@
 Bxn Team Mjolnir
 ===
 
+## [1.1.0-RC-2] - Truth of a Madman
+### OS X 10.11 Support
+**Latest Updates**
+
+- Removed: `puppet-{app_name}`, apps that don't need env settings are now
+  installed via Package class, sources depends on where it's available.
+- Removed: `boot2docker`, as per vendor notice, it's deprecated and is
+  replaced with `Docker-Machine` brewcask provider.
+
+
+
+
+**Known issues**
+
+  - `Docker-Machine` installation fails due to the "need of `sudo`" for
+    specific casks, a "hacky way" to work around it is to run:
+    `while true; do sudo ls -l; sleep 2; done;` before installation begins
+    so it keeps sudo session alive and succeed the cask's installation.
+
+
 ## [1.1.0-RC-1] - Truth of a Madman
 ### OS X 10.11 Support
 **Overview**
@@ -40,4 +60,3 @@ Bxn Team Mjolnir
   - Application puppets are maintained by the team [`puppet-*`](https://github.com/TORO-IO?utf8=✓&query=puppet-).
   - Boxen Web for automated installation. [branch](https://github.com/TORO-IO/bxn/tree/boxen-web) [9f174c6](https://github.com/TORO-IO/bxn/commit/9f174c6c436dad0bec379fcc51bc4aa362e0bff)
   - Boxen Web is restricted to Team Mjolnir only.
-

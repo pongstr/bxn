@@ -1,7 +1,6 @@
+---
 
 boxen::personal::homebrew_packages:
-  - docker
-  - boot2docker
   - heroku-toolbelt
 
 boxen::personal::osx_apps:
@@ -11,7 +10,8 @@ boxen::personal::osx_apps:
   - github-desktop
   - skype
   - spotify
-
+  - torbrowser
+  
 boxen::personal::projects:
   - bootstrap
   - darkstar

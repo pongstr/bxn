@@ -12,13 +12,15 @@ class projects::tomorrowland {
     ensure => directory,
   }
 
-  exec { 'CreateSelfSignedCerts':
-    command     => "sh ${boxen}/shell/${tomorrowland}.sh",
-    creates     => "${boxen::config::home}/data/nginx/ssl/*.dev.crt",
-    refreshonly => true,
-    onlyif      => [
-      "test ! -f ${boxen::config::home}/data/nginx/ssl/*.dev.crt",
-    ],
+  file { "${boxen}/shell/coder.sh":
+    ensure => 'present',
+    notify => Exec['CoderSSL']
+  }
+
+  exec { 'CoderSSL':
+    require => File["${boxen}/shell/coder.sh"],
+    command => "/bin/bash ${boxen}/shell/coder.sh",
+    user => 'root'
   }
 
   boxen::project { $tomorrowland:
