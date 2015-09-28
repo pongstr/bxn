@@ -1,7 +1,7 @@
 Bxn Team Mjolnir
 ===
 
-## [1.1.0-RC-2] - Truth of a Madman
+## [1.1.0-RC2] - Truth of a Madman
 ### OS X 10.11 Support
 **Latest Updates**
 
@@ -9,9 +9,9 @@ Bxn Team Mjolnir
   installed via Package class, sources depends on where it's available.
 - Removed: `boot2docker`, as per vendor notice, it's deprecated and is
   replaced with `Docker-Machine` brewcask provider.
-
-
-
+- Updated: Redis `v3.0.4`
+- Updated: Node.js `v4.1.1`
+- Patched: [#30](https://github.com/toro-io/bxn/issues/30) [#32](https://github.com/toro-io/bxn/issues/32)
 
 **Known issues**
 
@@ -20,8 +20,7 @@ Bxn Team Mjolnir
     `while true; do sudo ls -l; sleep 2; done;` before installation begins
     so it keeps sudo session alive and succeed the cask's installation.
 
-
-## [1.1.0-RC-1] - Truth of a Madman
+## [1.1.0-RC1] - Truth of a Madman
 ### OS X 10.11 Support
 **Overview**
   - OS X 10.11 Compatibility

@@ -28,6 +28,14 @@ $ chmod +x setup && ./setup
 The Setup
 ---
 
+Install XCode 7 and validate the installation, meaning run the Xcode.app and
+validate it from there, otherwise non of the commands below will run properly.
+
+Once validated, open your terminal and run `xcode-select --install` to get the
+latest, compatible Xcode Commandline tools, although these steps are redundant
+to the script from boxen-web, it's better to have these done now to make sure
+we meet all the requirements to run boxen.
+
 1. Go to [https://bxnmjolnir.herokuapp.com/](https://bxnmjolnir.herokuapp.com/)
 1. Login using your Github Account
 1. Copy + Paste the one liner to your Terminal
