@@ -16,4 +16,5 @@ mongodb::config:
 # Redis
 redis::config:
   host: '127.0.0.1'
-  port: '16379'
+  port: 16379
+  version: '3.0.4-boxen1'
