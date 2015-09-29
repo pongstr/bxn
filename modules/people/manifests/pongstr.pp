@@ -6,9 +6,9 @@ class people::pongstr {
   $home_directory  = "/Users/${::boxen_user}"
   $custom_dotfiles = "${home_directory}/.dotfiles"
   $custom_projects = "${home_directory}/Projects"
-  $custom_packages = "${home_directory}/Library/Application Support/Sublime Text 3/Packages"
+  $custom_packages = "${home_directory}/Library/Application Support/Sublime Text 3/"
 
-  file { "${custom_packages}/User":
+  file { "${custom_packages}/Packages/User":
     ensure => directory,
     require => Package['sublime-text3'],
   }
@@ -24,7 +24,7 @@ class people::pongstr {
 
   # Pongstr Spacegray Theme
   repository { $custom_packages:
-    path     => "${custom_packages}/Theme - Spacegray",
+    path     => "${custom_packages}/Packages/Theme - Spacegray",
     ensure   => 'origin/master',
     source   => 'pongstr/spacegray',
     force    => true,
@@ -73,33 +73,40 @@ class people::pongstr {
   # ---------------------
 
   # Preferences
-  file { "${custom_packages}/User/Preferences.sublime-settings":
+  file { "${custom_packages}/Packages/User/Preferences.sublime-settings":
     mode    => '0755',
     group   => 'staff',
     owner   => $boxen_user,
     ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Preferences.sublime-settings",
-    require => File["${custom_packages}/User"],
+    require => File["${custom_packages}/Packages/User"],
   }
 
   # Keymaps
-  file { "${custom_packages}/User/Default (OSX).sublime-keymap":
+  file { "${custom_packages}/Packages/User/Default (OSX).sublime-keymap":
     mode    => '0755',
     group   => 'staff',
     owner   => $boxen_user,
     ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Default (OSX).sublime-keymap",
-    require => File["${custom_packages}/User"],
+    require => File["${custom_packages}/Packages/User"],
   }
 
-  # Package Control
-  file { "${custom_packages}/User/Package Control.sublime-settings":
+  # Sublime Text Packages
+  file { "${custom_packages}/Packages/User/Package Control.sublime-settings":
     mode    => '0755',
     group   => 'staff',
     owner   => $boxen_user,
     ensure  => present,
     source  => "${custom_dotfiles}/bin/subl/Package Control.sublime-settings",
-    require => File["${custom_packages}/User"],
+    require => File["${custom_packages}/Packages/User"],
+  }
+
+  # Package Control
+  $package_control = "https://packagecontrol.io/Package%20Control.sublime-package"
+
+  exec { 'Package Control':
+    command => "wget --directory-prefix=\"${custom_packages}Installed Packages\" ${package_control}",
   }
 
   include projects::all
