@@ -63,18 +63,6 @@ github "xquartz",         "1.2.2", :repo => "toro-io/puppet-xquartz"
 # and doesn't require environment settings, it would also mean that forked
 # puppets will no longer need maintenance everytime the application updates
 
-# github "atom",            "1.3.0"
-# github "chrome",          "1.2.0"
-# github "cyberduck",       "1.0.2", :repo => "toro-io/puppet-cyberduck"
-# github "dashlane",        "1.0.2", :repo => "toro-io/puppet-dashlane"
-# github "diffmerge",       "1.0.0", :repo => "toro-io/puppet-diffmerge"
-# github "firefox",         "1.2.4", :repo => "toro-io/puppet-firefox"
-# github "hipchat",         "1.1.4", :repo => "toro-io/puppet-hipchat"
-# github "sublime_text",    "1.1.1", :repo => "toro-io/puppet-sublime_text"
-# github "vlc",             "1.1.1", :repo => "toro-io/puppet-vlc"
-# github "boot2docker",     "1.0.2", :repo => "toro-io/puppet-boot2docker"
-# github "iterm2",          "1.2.5"
-
 github "mongodb",         "1.4.1",  :repo => "toro-io/puppet-mongodb"
 github "mysql",           "2.1.2"
 github "osx",             "2.8.0"
