@@ -7,7 +7,8 @@ class projects::tomorrowland {
   $coder_path = "/Users/${::boxen_user}/Projects/${coder_project}"
 
   # Dev Environment Variables
-  $coder_env = "# Coder Dev Env Variables
+  $coder_env = "
+# Coder Dev Env Variables
 export BOXEN_CODER_APP_URL=coder.dev
 export BOXEN_CODER_APP_NAME=coder
 export BOXEN_CODER_APP_REPO=git@bitbutcket.org:torodev/coder.io.git
@@ -21,6 +22,7 @@ export BOXEN_CODER_MAIL_PASS=REDACTED
 export BOXEN_CODER_CDN=rackspace
 export BOXEN_CODER_CDN_USER=REDACTED
 export BOXEN_CODER_CDN_APIKEY=REDACTED
+export BOXEN_CODER_CDN_REGION=ORD
   "
 
   file { $coder_path: ensure => 'directory' }
