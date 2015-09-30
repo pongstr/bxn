@@ -1,6 +1,34 @@
 Bxn Team Mjolnir
 ===
 
+## [1.1.0] - Truth of a Madman
+
+**Overview**
+
+- Updated: Boxen Core (`boxen 2.8.0`, puppet-homebrew to `2.0.0`,  mongodb to `3.0.6`)
+- Updated: Projects installation end-to-end setup
+- Updated: Native Apps installation (not via `puppet-*``: for apps that don't require specific settings)
+- Added: OS X 10.11 Support
+- Added: Project dev environment settings are added
+- Added: Node.js 4.x.x availability (deprecating 0.12.x on all projects)
+- Added: Docker-Machine + Kitematic (boot2docker is now deprecated, as per vendor)
+- Added: Redis v3.0.4 Puppet
+- Removed: Boot2docker
+- Removed: Node.js versions older than 0.12.x
+- Removed: Bootstrap Gem
+- Removed: Native apps installation via `puppet-`
+- Deprecated: Compass Sass, switching to SASSc   
+
+**Notes**
+
+Bugs that came up from these changes have been fixed:
+
+- Patched: [#32](https://github.com/toro-io/bxn/issues/32) Upgrade to Redis doesn't get linked after `boxen`
+- Patched: [#30](https://github.com/toro-io/bxn/issues/30) Custom scripts for projects
+- Patched: [#29](https://github.com/toro-io/bxn/issues/29) MongoDB doesn't get linked after `boxen` ran
+- Patched: [#25](https://github.com/toro-io/bxn/issues/25) MongoDB installation breaks
+- Patched: [#27](https://github.com/toro-io/bxn/issues/27) oh-my-zsh doesn't get installed
+
 ## [1.1.0-RC2] - Truth of a Madman
 ### OS X 10.11 Support
 **Latest Updates**
@@ -15,10 +43,10 @@ Bxn Team Mjolnir
 
 **Known issues**
 
-  - `Docker-Machine` installation fails due to the "need of `sudo`" for
-    specific casks, a "hacky way" to work around it is to run:
-    `while true; do sudo ls -l; sleep 2; done;` before installation begins
-    so it keeps sudo session alive and succeed the cask's installation.
+- `Docker-Machine` installation fails due to the "need of `sudo`" for
+  specific casks, a "hacky way" to work around it is to run:
+  `while true; do sudo ls -l; sleep 2; done;` before installation begins
+  so it keeps sudo session alive and succeed the cask's installation.
 
 ## [1.1.0-RC1] - Truth of a Madman
 ### OS X 10.11 Support
