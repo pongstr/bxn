@@ -209,10 +209,16 @@ node default {
     ruby_version => $ruby_version,
   }
 
-  # !Deprecated since v1.1.0 in place of `libsass` and `sassc`
-  ruby_gem { 'sass compass':
+  # !Deprecated since v1.1.0 in place of `bourbon`, `libsass` and `sassc`
+  ruby_gem { 'compass':
     gem          => 'compass',
     version      => '~> 1.0.3',
+    ruby_version => $ruby_version,
+  }
+
+  ruby_gem { 'bourbon':
+    gem          => 'bourbon',
+    version      => '~> 4.2.5',
     ruby_version => $ruby_version,
   }
 
