@@ -27,6 +27,10 @@ export BOXEN_UIKIT_CDN_REGION=ORD
 
   file { $uikit_path: ensure => 'directory' }
 
+  file { "${uikit_conf}/env.d/110_${uikit_project}.sh":
+    content => "$uikit_env",
+  }
+
   boxen::project { $uikit_project:
     dir     => $uikit_path,
     mongodb => true,
