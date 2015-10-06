@@ -16,7 +16,7 @@ class people::pongstr {
   # Pongstr Dotfiles
   repository { $custom_dotfiles:
     path     => $custom_dotfiles,
-    ensure   => 'origin/master',
+    ensure   => '59a22dd302b40a0e237a5352f6547435b84dc575',
     source   => 'pongstr/dotfiles',
     force    => true,
     provider => 'git',
