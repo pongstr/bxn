@@ -17,12 +17,12 @@ export BOXEN_CODER_APP_VERSION=2.0.0
 export BOXEN_CODER_APP_REPO_REF=develop
 export BOXEN_CODER_MAIL_HOST=smtp.gmail.com
 export BOXEN_CODER_MAIL_PORT=465
-export BOXEN_CODER_MAIL_USER=toro.repo@toro.io
+export BOXEN_CODER_MAIL_USER=noreply.coder@toro.io
 export BOXEN_CODER_MAIL_PASS=REDACTED
 export BOXEN_CODER_CDN=rackspace
 export BOXEN_CODER_CDN_USER=REDACTED
 export BOXEN_CODER_CDN_APIKEY=REDACTED
-export BOXEN_CODER_CDN_REGION=ORD
+export BOXEN_CODER_CDN_REGION=DFW
   "
 
   file { $coder_path: ensure => 'directory' }
