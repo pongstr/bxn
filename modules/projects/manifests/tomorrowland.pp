@@ -23,6 +23,8 @@ export BOXEN_CODER_CDN=rackspace
 export BOXEN_CODER_CDN_USER=REDACTED
 export BOXEN_CODER_CDN_APIKEY=REDACTED
 export BOXEN_CODER_CDN_REGION=DFW
+export BOXEN_CODER_CDN_URL=REDACTED
+export BOXEN_CODER_CDN_CONTAINER=REDACTED
   "
 
   file { $coder_path: ensure => 'directory' }
