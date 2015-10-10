@@ -71,7 +71,7 @@ node default {
 
   # node versions
   nodejs::version { '0.12.7': }
-  nodejs::version { '4.1.1': }
+  nodejs::version { '4.1.2': }
 
   # default ruby versions
   ruby::version { '1.9.3': }
@@ -111,7 +111,7 @@ node default {
   $custom_dotfiles = "${home_directory}/.dotfiles"
   $custom_projects = "${home_directory}/Projects"
 
-  $node_version = '4.1.1'
+  $node_version = '4.1.2'
   $ruby_version = '2.1.6'
 
   # NPM Modules
