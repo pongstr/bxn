@@ -79,11 +79,6 @@ GITHUBTARBALL
     python (2.0.1)
 
 GITHUBTARBALL
-  remote: toro-io/puppet-redis
-  specs:
-    redis (3.2.1)
-
-GITHUBTARBALL
   remote: boxen/puppet-repository
   specs:
     repository (2.4.1)
@@ -146,7 +141,12 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: toro-io/puppet-nodejs
   specs:
-    nodejs (5.0.3)
+    nodejs (5.0.6)
+
+GITHUBTARBALL
+  remote: toro-io/puppet-redis
+  specs:
+    redis (3.2.1)
 
 GITHUBTARBALL
   remote: toro-io/puppet-tunnelblick
@@ -178,7 +178,7 @@ DEPENDENCIES
   mongodb (= 1.4.1)
   mysql (= 2.1.2)
   nginx (= 1.4.7)
-  nodejs (= 5.0.3)
+  nodejs (= 5.0.6)
   openssl (= 1.0.0)
   osx (= 2.8.0)
   phantomjs (= 3.0.0)
@@ -197,3 +197,4 @@ DEPENDENCIES
   wget (= 1.0.1)
   xquartz (= 1.2.2)
   zsh (= 1.0.0)
+

@@ -16,7 +16,7 @@ export BOXEN_CODER_APP_PORTS=\"5000 5001 5002 5003 5004\"
 export BOXEN_CODER_APP_VERSION=2.0.0
 export BOXEN_CODER_APP_REPO_REF=develop
 export BOXEN_CODER_MAIL_HOST=smtp.gmail.com
-export BOXEN_CODER_MAIL_PORT=465
+export BOXEN_CODER_MAIL_PORT=REDACTED
 export BOXEN_CODER_MAIL_USER=noreply.coder@toro.io
 export BOXEN_CODER_MAIL_PASS=REDACTED
 export BOXEN_CODER_CDN=rackspace
@@ -24,7 +24,7 @@ export BOXEN_CODER_CDN_USER=REDACTED
 export BOXEN_CODER_CDN_APIKEY=REDACTED
 export BOXEN_CODER_CDN_REGION=DFW
 export BOXEN_CODER_CDN_URL=REDACTED
-export BOXEN_CODER_CDN_CONTAINER=REDACTED
+export BOXEN_CODER_CDN_CONTAINER=cdn.toro.io
   "
 
   file { $coder_path: ensure => 'directory' }
@@ -53,7 +53,7 @@ export BOXEN_CODER_CDN_CONTAINER=REDACTED
     dir     => $coder_path,
     mongodb => true,
     nginx   => "${coder_file}/shared/$coder_project.conf.erb",
-    nodejs  => "0.12.7",
+    nodejs  => "4.1.2",
     source  => "git@bitbucket.org:torodev/coder.io.git",
   }
 }
