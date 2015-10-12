@@ -6,3 +6,4 @@
 /log
 /tmp
 /vendor/bundle
+config-set.sh
