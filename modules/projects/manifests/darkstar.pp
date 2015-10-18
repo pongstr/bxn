@@ -40,7 +40,7 @@ export BOXEN_UIKIT_GITHUB_ORG=REDACTED
     dir     => $uikit_path,
     mongodb => true,
     nginx   => "${uikit_file}/shared/$uikit_project.conf.erb",
-    nodejs  => "4.1.2",
+    nodejs  => "4.2.1",
     source  => "git@bitbucket.org:torodev/darkstar.git",
   }
 }

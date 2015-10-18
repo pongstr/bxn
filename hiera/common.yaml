@@ -4,11 +4,11 @@ ruby::global::version: "2.1.6"
 
 # NodeJS
 nodejs::provider: "nodenv"
-nodejs::build::ensure: "204fe3f2c312e45288e63ce3abaf2b99298cf6c5"
-nodejs::global::version: "4.1.2"
+nodejs::build::ensure: "43aee6ee8b7ed34b8677cb93b3d8ac6aefffdfb4"
+nodejs::global::version: "4.2.1"
 nodejs::version::alias:
   "0.12": "0.12.0"
-  "4.1": "4.1.2"
+  "4.2": "4.2.1"
 
 # MongoDB
 mongodb::config:
