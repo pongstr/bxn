@@ -111,12 +111,17 @@ node default {
   $custom_dotfiles = "${home_directory}/.dotfiles"
   $custom_projects = "${home_directory}/Projects"
 
-  $node_version = '4.1.2'
+  $node_version = '4.2.1'
   $ruby_version = '2.1.6'
 
   # NPM Modules
   # -----------
   # Default Mjolnir modules for development and convenience.
+
+  npm_module { 'node-gyp':
+    module       => 'node-gyp',
+    node_version => $node_version,
+  }
 
   npm_module { 'Bower Browser Package Manager':
     module       => 'bower',

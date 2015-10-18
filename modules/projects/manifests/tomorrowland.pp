@@ -53,7 +53,7 @@ export BOXEN_CODER_CDN_CONTAINER=cdn.toro.io
     dir     => $coder_path,
     mongodb => true,
     nginx   => "${coder_file}/shared/$coder_project.conf.erb",
-    nodejs  => "4.1.2",
+    nodejs  => "4.2.1",
     source  => "git@bitbucket.org:torodev/coder.io.git",
   }
 }
